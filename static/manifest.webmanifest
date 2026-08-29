@@ -1,0 +1,9 @@
+{
+  "name": "IGS Restaurant PRO",
+  "short_name": "IGS PRO",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f2",
+  "theme_color": "#0f8b6f",
+  "icons": []
+}

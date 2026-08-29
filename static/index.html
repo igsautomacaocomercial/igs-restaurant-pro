@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IGS Restaurant PRO</title>
+    <link rel="manifest" href="/static/manifest.webmanifest" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">IGS</div>
+        <div>
+          <strong>Restaurant PRO</strong>
+          <span id="db-mode">conectando...</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-item active" data-view="dashboard"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></button>
+        <button class="nav-item" data-view="tables"><i data-lucide="utensils"></i><span>Mesas</span></button>
+        <button class="nav-item" data-view="orders"><i data-lucide="clipboard-list"></i><span>Comandas</span></button>
+        <button class="nav-item" data-view="kitchen"><i data-lucide="chef-hat"></i><span>Produção</span></button>
+        <button class="nav-item" data-view="delivery"><i data-lucide="bike"></i><span>Delivery</span></button>
+        <button class="nav-item" data-view="pdv"><i data-lucide="monitor-dot"></i><span>PDV</span></button>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" type="button" data-toggle-menu="caixa">
+            <i data-lucide="landmark"></i><span>Caixa</span><i class="chevron" data-lucide="chevron-down"></i>
+          </button>
+          <div class="submenu" id="caixa-menu">
+            <button class="nav-item sub-item" data-view="cash-open"><i data-lucide="lock-keyhole-open"></i><span>Abertura de caixa</span></button>
+            <button class="nav-item sub-item" data-view="cash-close"><i data-lucide="lock-keyhole"></i><span>Fechamento de caixa</span></button>
+            <button class="nav-item sub-item" data-view="cash-withdraw"><i data-lucide="arrow-up-from-line"></i><span>Sangria</span></button>
+            <button class="nav-item sub-item" data-view="cash-reinforce"><i data-lucide="arrow-down-to-line"></i><span>Reforço de caixa</span></button>
+          </div>
+        </div>
+
+        <div class="nav-group open">
+          <button class="nav-item nav-parent" type="button" data-toggle-menu="cadastros">
+            <i data-lucide="folder-plus"></i><span>Cadastro</span><i class="chevron" data-lucide="chevron-down"></i>
+          </button>
+          <div class="submenu" id="cadastros-menu">
+            <button class="nav-item sub-item" data-view="emitter-register"><i data-lucide="store"></i><span>Emitente</span></button>
+            <button class="nav-item sub-item" data-view="products-register"><i data-lucide="hamburger"></i><span>Produtos</span></button>
+            <button class="nav-item sub-item" data-view="customers-register"><i data-lucide="user-round-plus"></i><span>Clientes</span></button>
+            <button class="nav-item sub-item" data-view="suppliers-register"><i data-lucide="truck"></i><span>Fornecedores</span></button>
+            <button class="nav-item sub-item" data-view="tables-register"><i data-lucide="table-2"></i><span>Mesas</span></button>
+            <button class="nav-item sub-item" data-view="tabs-register"><i data-lucide="badge"></i><span>Comandas</span></button>
+            <button class="nav-item sub-item" data-view="stock"><i data-lucide="package-search"></i><span>Estoque</span></button>
+            <button class="nav-item sub-item" data-view="groups"><i data-lucide="layers-3"></i><span>Grupos</span></button>
+            <button class="nav-item sub-item" data-view="ingredients"><i data-lucide="wheat"></i><span>Ingredientes</span></button>
+            <button class="nav-item sub-item" data-view="payment-methods"><i data-lucide="credit-card"></i><span>Formas de pagamento</span></button>
+            <button class="nav-item sub-item" data-view="chart-accounts"><i data-lucide="book-open-check"></i><span>Plano de contas</span></button>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-item nav-parent" type="button" data-toggle-menu="financeiro">
+            <i data-lucide="wallet-cards"></i><span>Financeiro</span><i class="chevron" data-lucide="chevron-down"></i>
+          </button>
+          <div class="submenu" id="financeiro-menu">
+            <button class="nav-item sub-item" data-view="accounts-payable"><i data-lucide="file-minus-2"></i><span>Contas a pagar</span></button>
+            <button class="nav-item sub-item" data-view="accounts-receivable"><i data-lucide="file-plus-2"></i><span>Contas a receber</span></button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="quick-actions">
+        <button data-view="digital-menu"><i data-lucide="qr-code"></i><span>QR Cardápio</span></button>
+        <button data-view="print-settings"><i data-lucide="printer"></i><span>Impressão</span></button>
+      </div>
+    </aside>
+
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Operação em tempo real</p>
+          <h1>IGS Restaurant PRO</h1>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" title="Sincronizar" data-action="refresh"><i data-lucide="refresh-cw"></i></button>
+          <button class="primary-btn" data-view="orders"><i data-lucide="plus"></i><span>Novo pedido</span></button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="view active">
+        <div class="metrics" id="metrics"></div>
+        <div class="content-grid">
+          <section class="panel wide">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Vendas</p>
+                <h2>Últimos 7 dias</h2>
+              </div>
+              <button class="ghost-btn" data-view="reports"><i data-lucide="bar-chart-3"></i><span>Relatórios</span></button>
+            </div>
+            <div class="chart" id="sales-chart"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Alertas</p>
+                <h2>Agora</h2>
+              </div>
+            </div>
+            <div class="alert-list">
+              <div><i data-lucide="triangle-alert"></i><span>5 itens abaixo do estoque mínimo</span></div>
+              <div><i data-lucide="clock"></i><span>2 pedidos acima de 15 minutos</span></div>
+              <div><i data-lucide="receipt-text"></i><span>Fechamento de caixa pendente</span></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="tables" class="view">
+        <div class="section-head">
+          <h2>Mapa de mesas</h2>
+          <div class="segmented">
+            <button class="active">Salão</button><button>Varanda</button><button>Delivery</button>
+          </div>
+        </div>
+        <div class="table-map" id="table-map"></div>
+      </section>
+
+      <section id="orders" class="view">
+        <div class="section-head">
+          <h2>Comandas e produtos</h2>
+          <button class="primary-btn"><i data-lucide="scan-barcode"></i><span>Lançar item</span></button>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+      </section>
+
+      <section id="pdv" class="view">
+        <div class="pdv-shell">
+          <header class="pdv-header">
+            <div>
+              <p class="eyebrow">Venda rápida balcão</p>
+              <h2>PDV Caixa 01</h2>
+            </div>
+            <div class="pdv-status">
+              <span><i data-lucide="user-round"></i> Consumidor final</span>
+              <span><i data-lucide="lock-keyhole-open"></i> Caixa aberto</span>
+              <span><i data-lucide="receipt"></i> Cupom 000128</span>
+            </div>
+          </header>
+
+          <div class="pdv-grid">
+            <section class="pdv-products">
+              <div class="pdv-search">
+                <i data-lucide="scan-barcode"></i>
+                <input placeholder="Código de barras, nome do produto ou tecla rápida" value="" />
+                <button class="primary-btn"><i data-lucide="plus"></i><span>Adicionar</span></button>
+              </div>
+              <div class="pdv-category-bar">
+                <button class="active">Mais vendidos</button>
+                <button>Lanches</button>
+                <button>Pizzas</button>
+                <button>Bebidas</button>
+                <button>Sobremesas</button>
+              </div>
+              <div class="pdv-product-grid">
+                <button class="pdv-product" data-pdv-add="X-Burger Artesanal" data-price="29.9"><i data-lucide="hamburger"></i><strong>X-Burger</strong><span>R$ 29,90</span></button>
+                <button class="pdv-product" data-pdv-add="Pizza Calabresa" data-price="54.9"><i data-lucide="pizza"></i><strong>Pizza Calabresa</strong><span>R$ 54,90</span></button>
+                <button class="pdv-product" data-pdv-add="Batata Cheddar" data-price="32"><i data-lucide="package-plus"></i><strong>Batata Cheddar</strong><span>R$ 32,00</span></button>
+                <button class="pdv-product" data-pdv-add="Refrigerante Lata" data-price="7"><i data-lucide="cup-soda"></i><strong>Refrigerante</strong><span>R$ 7,00</span></button>
+                <button class="pdv-product" data-pdv-add="Suco Natural" data-price="12"><i data-lucide="glass-water"></i><strong>Suco Natural</strong><span>R$ 12,00</span></button>
+                <button class="pdv-product" data-pdv-add="Pudim da Casa" data-price="14"><i data-lucide="ice-cream-cone"></i><strong>Pudim</strong><span>R$ 14,00</span></button>
+              </div>
+            </section>
+
+            <section class="pdv-ticket">
+              <div class="pdv-ticket-head">
+                <strong>Itens da venda</strong>
+                <button class="ghost-btn" data-pdv-action="customer"><i data-lucide="user-plus"></i><span>Cliente</span></button>
+              </div>
+              <div class="pdv-items" id="pdv-items">
+                <div class="pdv-item selected">
+                  <span>1x</span>
+                  <strong>X-Burger Artesanal</strong>
+                  <em>R$ 29,90</em>
+                </div>
+                <div class="pdv-item">
+                  <span>2x</span>
+                  <strong>Refrigerante Lata</strong>
+                  <em>R$ 14,00</em>
+                </div>
+              </div>
+              <div class="pdv-totals">
+                <div><span>Subtotal</span><strong id="pdv-subtotal">R$ 43,90</strong></div>
+                <div><span>Desconto</span><strong id="pdv-discount">R$ 0,00</strong></div>
+                <div><span>Acréscimo</span><strong id="pdv-surcharge">R$ 0,00</strong></div>
+                <div class="pdv-grand-total"><span>Total</span><strong id="pdv-total">R$ 43,90</strong></div>
+              </div>
+            </section>
+
+            <aside class="pdv-actions">
+              <button data-pdv-action="finalize" class="pdv-command finish"><i data-lucide="check-circle-2"></i><span>Finalizar venda</span><small>F12</small></button>
+              <button data-pdv-action="discount" class="pdv-command"><i data-lucide="badge-percent"></i><span>Desconto</span><small>F7</small></button>
+              <button data-pdv-action="surcharge" class="pdv-command"><i data-lucide="circle-plus"></i><span>Acréscimo</span><small>F8</small></button>
+              <button data-pdv-action="cancel-item" class="pdv-command warning"><i data-lucide="list-x"></i><span>Cancelar item</span><small>Del</small></button>
+              <button data-pdv-action="cancel-sale" class="pdv-command danger"><i data-lucide="ban"></i><span>Cancelar cupom</span><small>Esc</small></button>
+              <button data-pdv-action="customer" class="pdv-command"><i data-lucide="users"></i><span>Cliente</span><small>F5</small></button>
+            </aside>
+          </div>
+
+          <footer class="pdv-footer">
+            <span id="pdv-message">Pronto para venda rápida.</span>
+            <span>Operador: Ana</span>
+          </footer>
+        </div>
+
+        <div class="pdv-payment-overlay" id="pdv-payment-overlay" aria-hidden="true">
+          <section class="pdv-payment-modal">
+            <header>
+              <div>
+                <p class="eyebrow">Finalização</p>
+                <h2>Formas de pagamento</h2>
+              </div>
+              <button class="icon-btn" data-pdv-action="close-payment" title="Fechar"><i data-lucide="x"></i></button>
+            </header>
+
+            <div class="pdv-payment-body">
+              <div class="pdv-payment-methods">
+                <button data-payment-method="Dinheiro" data-icon="banknote"><i data-lucide="banknote"></i><span>Dinheiro</span></button>
+                <button data-payment-method="Cartão crédito" data-icon="credit-card"><i data-lucide="credit-card"></i><span>Cartão crédito</span></button>
+                <button data-payment-method="Cartão débito" data-icon="badge-check"><i data-lucide="badge-check"></i><span>Cartão débito</span></button>
+                <button data-payment-method="Vale alimentação" data-icon="ticket"><i data-lucide="ticket"></i><span>Vale alimentação</span></button>
+                <button data-payment-method="PIX" data-icon="qr-code"><i data-lucide="qr-code"></i><span>PIX</span></button>
+                <button data-payment-method="A prazo" data-icon="calendar-days"><i data-lucide="calendar-days"></i><span>A prazo</span></button>
+              </div>
+
+              <div class="pdv-payment-summary">
+                <div class="pdv-payment-total">
+                  <span>Total da venda</span>
+                  <strong id="payment-sale-total">R$ 0,00</strong>
+                </div>
+                <label>Valor da forma selecionada<input id="payment-amount" value="0,00" /></label>
+                <button class="primary-btn" data-pdv-action="add-payment"><i data-lucide="plus"></i><span>Adicionar pagamento</span></button>
+                <div class="payment-lines" id="payment-lines"></div>
+                <div class="payment-balance">
+                  <div><span>Pago</span><strong id="payment-paid">R$ 0,00</strong></div>
+                  <div><span>Restante</span><strong id="payment-remaining">R$ 0,00</strong></div>
+                  <div><span>Troco</span><strong id="payment-change">R$ 0,00</strong></div>
+                </div>
+                <button class="pdv-command finish payment-finish" data-pdv-action="confirm-payment"><i data-lucide="check-circle-2"></i><span>Confirmar venda</span><small>Enter</small></button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="pdv-payment-overlay" id="receipt-overlay" aria-hidden="true">
+          <section class="receipt-modal">
+            <header>
+              <h2>Cupom 80mm</h2>
+              <button class="icon-btn" data-receipt-action="close" title="Fechar"><i data-lucide="x"></i></button>
+            </header>
+            <div class="receipt-paper" id="receipt-paper"></div>
+            <div class="receipt-actions">
+              <button class="ghost-btn" data-receipt-action="print"><i data-lucide="printer"></i><span>Imprimir</span></button>
+              <button class="primary-btn" data-receipt-action="close"><i data-lucide="check"></i><span>Nova venda</span></button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="kitchen" class="view">
+        <div class="section-head">
+          <h2>Kanban de produção</h2>
+          <button class="ghost-btn" data-view="print-settings"><i data-lucide="printer-check"></i><span>Teste de impressão</span></button>
+        </div>
+        <div class="kanban" id="kanban"></div>
+      </section>
+
+      <section id="delivery-old" class="view">
+        <div class="section-head">
+          <h2>Central de delivery</h2>
+          <button class="primary-btn"><i data-lucide="message-circle"></i><span>Pedido WhatsApp</span></button>
+        </div>
+        <div class="delivery-fee-preview">
+          <div>
+            <span>Cliente selecionado</span>
+            <strong>Mariana Lopes</strong>
+          </div>
+          <div>
+            <span>Bairro</span>
+            <strong id="delivery-district-preview">Bethânia</strong>
+          </div>
+          <div>
+            <span>Taxa do bairro</span>
+            <strong id="delivery-fee-preview">R$ 5,00</strong>
+          </div>
+          <div>
+            <span>Total com entrega</span>
+            <strong id="delivery-total-preview">R$ 91,80</strong>
+          </div>
+        </div>
+        <div class="list-panel" id="delivery-list"></div>
+      </section>
+
+      <section id="delivery" class="view">
+        <div class="section-head">
+          <h2>Central de delivery</h2>
+          <div class="top-actions">
+            <button class="ghost-btn" data-delivery-action="whatsapp"><i data-lucide="message-circle"></i><span>Pedido WhatsApp</span></button>
+            <button class="primary-btn" data-delivery-action="new-order"><i data-lucide="plus"></i><span>Novo pedido</span></button>
+          </div>
+        </div>
+        <div class="delivery-shell">
+          <section class="panel delivery-search-card">
+            <div class="form-title"><i data-lucide="phone-call"></i><span>Pesquisa do cliente</span></div>
+            <div class="delivery-search-row">
+              <label>Telefone<input id="delivery-phone-search" placeholder="Digite o telefone do cliente" /></label>
+              <label>Nome<input id="delivery-name-search" placeholder="Busca por nome" /></label>
+              <button class="primary-btn" data-delivery-action="lookup"><i data-lucide="search"></i><span>Consultar entrega</span></button>
+            </div>
+            <div class="delivery-customer-preview" id="delivery-customer-preview"></div>
+          </section>
+
+          <section class="delivery-toolbar">
+            <button data-delivery-action="new-order"><i data-lucide="plus"></i><span>Novo pedido</span><small>F2</small></button>
+            <button data-delivery-action="finish-selected"><i data-lucide="check"></i><span>Finalizar</span><small>F6</small></button>
+            <button data-delivery-action="dispatch-selected"><i data-lucide="arrow-up-from-line"></i><span>Confirmar saida</span><small>F7</small></button>
+            <button data-delivery-action="cancel-selected"><i data-lucide="circle-minus"></i><span>Cancelar delivery</span><small>F8</small></button>
+            <button data-delivery-action="print-selected"><i data-lucide="printer"></i><span>Reimprimir pedido</span><small>F10</small></button>
+            <button data-delivery-action="edit-selected"><i data-lucide="file-pen-line"></i><span>Alterar</span><small>F11</small></button>
+            <button data-delivery-action="view-selected"><i data-lucide="clipboard-list"></i><span>Visualizar pedido</span><small>F12</small></button>
+            <button data-delivery-action="customer-info"><i data-lucide="users"></i><span>Informacoes cliente</span></button>
+          </section>
+
+          <div class="delivery-status-tabs">
+            <button class="active" data-delivery-tab="pending">Em processo <strong id="delivery-count-pending">0</strong></button>
+            <button data-delivery-tab="out_for_delivery">Em transito <strong id="delivery-count-out">0</strong></button>
+            <button data-delivery-tab="scheduled">Agendamento <strong id="delivery-count-scheduled">0</strong></button>
+            <button data-delivery-tab="delivered">Finalizadas <strong id="delivery-count-delivered">0</strong></button>
+          </div>
+
+          <section class="panel delivery-board-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow" id="delivery-board-title">Pedidos em processo</p>
+                <h2>Controle dos motoqueiros</h2>
+              </div>
+              <label class="delivery-filter">Buscar cliente<input id="delivery-board-filter" /></label>
+            </div>
+            <div class="delivery-board" id="delivery-board"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="stock" class="view">
+        <div class="section-head">
+          <h2>Cadastro de estoque</h2>
+          <button class="primary-btn"><i data-lucide="flask-conical"></i><span>Nova receita</span></button>
+        </div>
+        <div class="split">
+          <div class="panel">
+            <h2>Insumos críticos</h2>
+            <div class="stock-row"><span>Queijo mussarela</span><strong>2,4 kg</strong></div>
+            <div class="stock-row"><span>Molho especial</span><strong>850 ml</strong></div>
+            <div class="stock-row"><span>Embalagem delivery</span><strong>18 un</strong></div>
+          </div>
+          <div class="panel">
+            <h2>Baixa automática</h2>
+            <p class="muted">Ao vender um X-Burger, o sistema baixa pão, carne, queijo e molho pela ficha técnica cadastrada.</p>
+            <div class="recipe-card">X-Burger: 1 pão, 120g carne, 20g queijo, 15g molho</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="products-register" class="view">
+        <div class="section-head">
+          <h2>Cadastro de produtos e serviços</h2>
+          <div class="top-actions">
+            <button class="ghost-btn"><i data-lucide="copy"></i><span>Replicar</span></button>
+            <button class="primary-btn"><i data-lucide="save"></i><span>Salvar produto</span></button>
+          </div>
+        </div>
+
+        <div class="product-register-shell">
+          <aside class="product-tabs">
+            <button class="active"><i data-lucide="badge-dollar-sign"></i><span>Custo</span></button>
+            <button><i data-lucide="grid-3x3"></i><span>Grade</span></button>
+            <button><i data-lucide="barcode"></i><span>Nº série</span></button>
+            <button><i data-lucide="blocks"></i><span>Composição</span></button>
+            <button><i data-lucide="calendar-clock"></i><span>Lote/validade</span></button>
+            <button><i data-lucide="shuffle"></i><span>Variação</span></button>
+            <button><i data-lucide="factory"></i><span>Cód. fabricante</span></button>
+          </aside>
+
+          <div class="product-form-area">
+            <section class="panel product-form-card">
+              <div class="form-title"><i data-lucide="file-pen-line"></i><span>Ficha do item</span></div>
+              <div class="product-form-grid">
+                <label>Código<input value="000017" /></label>
+                <label>Barras<input value="0000000000170" /></label>
+                <label>Código NCM<input value="85444200" /></label>
+                <label>Código CEST<input value="1200700" /></label>
+                <label class="span-2">Descrição<input value="HAMBÚRGUER DE COSTELA" /></label>
+                <label>Und. saída<input value="UN" /></label>
+                <label>Und. entrada<input value="UND" /></label>
+                <label>Und. tributável<input value="UND" /></label>
+                <label>Qtd tributável<input value="0,000" /></label>
+                <label>Und. embalagem<input value="" /></label>
+                <label>Qtd embalagem<input value="0,000" /></label>
+                <label>Fator conversão<input value="1,000000" /></label>
+                <label>Fator conv. referência<input value="1,000000" /></label>
+                <label>Tamanho<input value="" /></label>
+                <label>Cor<input value="" /></label>
+                <label>Peso<input value="0,0000 Kg" /></label>
+              </div>
+            </section>
+
+            <section class="panel product-form-card">
+              <div class="form-title"><i data-lucide="link"></i><span>Associação</span></div>
+              <div class="product-form-grid">
+                <label>Fornecedor<select><option>IGS Distribuidora</option><option>Fornecedor padrão</option></select></label>
+                <label>Grupo<select><option>HAMBÚRGUER</option><option>PIZZAS</option><option>BEBIDAS</option></select></label>
+                <label>Família<select><option>CARNE BOVINA</option><option>LANCHES</option><option>PORÇÕES</option></select></label>
+                <label>Características<select><option>COSTELA</option><option>ARTESANAL</option><option>PROMOCIONAL</option></select></label>
+                <label class="span-2">Informações nutricionais<textarea>Produto preparado na cozinha. Permite adicionais e observações no pedido.</textarea></label>
+              </div>
+            </section>
+
+            <section class="panel product-form-card">
+              <div class="form-title"><i data-lucide="boxes"></i><span>Quantidades</span></div>
+              <div class="quantity-grid">
+                <div><span>Estoque</span><strong>9999,000</strong></div>
+                <div><span>Ideal</span><strong>0,000</strong></div>
+                <div><span>Saldo</span><strong>9999,000</strong></div>
+                <div><span>NF-e não autorizadas</span><strong>1,000</strong></div>
+              </div>
+              <div class="check-row">
+                <label><input type="checkbox" checked /> Permitir venda fracionada</label>
+                <label><input type="checkbox" /> Trabalhar com venda em m²</label>
+              </div>
+            </section>
+
+            <section class="panel product-form-card">
+              <div class="form-title"><i data-lucide="printer"></i><span>Impressão e produção</span></div>
+              <div class="print-sector-grid">
+                <label class="print-sector-card active"><input type="radio" name="print-sector" checked /><i data-lucide="chef-hat"></i><strong>Cozinha</strong><span>Lanches, pizzas, porções</span></label>
+                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="beer"></i><strong>Bar</strong><span>Drinks, cervejas, bebidas</span></label>
+                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="glass-water"></i><strong>Choperia</strong><span>Chopp e torre</span></label>
+                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="coffee"></i><strong>Copa</strong><span>Sucos, cafés, sobremesas</span></label>
+                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="flame"></i><strong>Churrasqueira</strong><span>Carnes e grelhados</span></label>
+                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="receipt"></i><strong>Caixa</strong><span>Comprovante e conferência</span></label>
+              </div>
+              <div class="check-row">
+                <label><input type="checkbox" checked /> Imprimir produção ao enviar pedido</label>
+                <label><input type="checkbox" /> Imprimir também no caixa</label>
+                <label><input type="checkbox" checked /> Mostrar senha do pedido</label>
+              </div>
+            </section>
+          </div>
+
+          <aside class="product-side-panel">
+            <section class="panel product-photo">
+              <span>Fotografia</span>
+              <div class="photo-preview">
+                <i data-lucide="hamburger"></i>
+              </div>
+              <button class="ghost-btn"><i data-lucide="image-plus"></i><span>Alterar foto</span></button>
+            </section>
+
+            <section class="panel product-flags">
+              <label><input type="checkbox" checked /> Ativo</label>
+              <label><input type="checkbox" checked /> Sinc. Ghub</label>
+              <label><input type="checkbox" /> Controle de lote/validade</label>
+            </section>
+
+            <section class="panel product-history">
+              <div><span>Última venda</span><strong>29/07/2024</strong></div>
+              <div><span>Última compra</span><strong>//</strong></div>
+              <div><span>Preço alterado</span><strong>20/02/2024</strong></div>
+              <div><span>Validade dias</span><strong>0</strong></div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section id="emitter-register" class="view">
+        <div class="section-head">
+          <h2>Cadastro do emitente</h2>
+          <button class="primary-btn"><i data-lucide="save"></i><span>Salvar emitente</span></button>
+        </div>
+        <div class="customer-register-grid">
+          <section class="panel product-form-card">
+            <div class="form-title"><i data-lucide="store"></i><span>Dados do comércio</span></div>
+            <div class="product-form-grid">
+              <label class="span-2">Razão social<input value="IGS Burger House LTDA" /></label>
+              <label class="span-2">Nome fantasia<input value="IGS Burger House" /></label>
+              <label>CNPJ<input value="12.345.678/0001-90" /></label>
+              <label>Inscrição estadual<input value="123456789" /></label>
+              <label>Inscrição municipal<input value="987654" /></label>
+              <label>Regime tributário<select><option>Simples Nacional</option><option>Lucro Presumido</option><option>Lucro Real</option></select></label>
+              <label>CNAE<input value="5611-2/01" /></label>
+              <label>Telefone<input value="(33) 3333-1010" /></label>
+              <label>WhatsApp<input value="(33) 99999-1010" /></label>
+              <label>E-mail<input value="contato@igsburger.com.br" /></label>
+            </div>
+          </section>
+          <section class="panel product-form-card">
+            <div class="form-title"><i data-lucide="map-pin"></i><span>Endereço e fiscal</span></div>
+            <div class="product-form-grid">
+              <label>CEP<input value="35160-000" /></label>
+              <label class="span-2">Endereço<input value="Avenida Brasil" /></label>
+              <label>Número<input value="1000" /></label>
+              <label>Complemento<input value="Loja 02" /></label>
+              <label>Bairro<input value="Centro" /></label>
+              <label>Cidade<input value="Ipatinga" /></label>
+              <label>UF<input value="MG" /></label>
+              <label>Ambiente NFC-e<select><option>Homologação</option><option>Produção</option></select></label>
+              <label>Série NFC-e<input value="1" /></label>
+              <label>Próxima NFC-e<input value="128" /></label>
+              <label>Cód. SAT<input value="" /></label>
+              <label>Validade certificado<input value="31/12/2026" /></label>
+              <label class="span-2">Rodapé do cupom<textarea>Obrigado pela preferência. Volte sempre!</textarea></label>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="tables-register" class="view">
+        <div class="section-head">
+          <h2>Cadastro de mesas</h2>
+          <button class="primary-btn" data-generator="tables"><i data-lucide="wand-sparkles"></i><span>Gerar mesas</span></button>
+        </div>
+        <div class="cash-layout">
+          <section class="panel form-panel">
+            <label>Quantidade de mesas<input id="table-count" value="12" /></label>
+            <label>Prefixo<input id="table-prefix" value="Mesa" /></label>
+            <label>Lugares por mesa<input id="table-seats" value="4" /></label>
+            <label>Área/setor<select><option>Salão</option><option>Varanda</option><option>Área externa</option></select></label>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Prévia</p>
+                <h2>Mesas geradas</h2>
+              </div>
+            </div>
+            <div class="generated-grid" id="generated-tables"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="tabs-register" class="view">
+        <div class="section-head">
+          <h2>Cadastro de comandas</h2>
+          <button class="primary-btn" data-generator="tabs"><i data-lucide="wand-sparkles"></i><span>Gerar comandas</span></button>
+        </div>
+        <div class="cash-layout">
+          <section class="panel form-panel">
+            <label>Quantidade de comandas<input id="tab-count" value="100" /></label>
+            <label>Número inicial<input id="tab-start" value="1" /></label>
+            <label>Tipo<select id="tab-type"><option>Física</option><option>Digital</option><option>QR Code</option></select></label>
+            <label>Prefixo opcional<input id="tab-prefix" value="C" /></label>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Prévia</p>
+                <h2>Comandas geradas</h2>
+              </div>
+            </div>
+            <div class="generated-grid compact" id="generated-tabs"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="customers-register" class="view">
+        <div class="section-head">
+          <h2>Cadastro de clientes</h2>
+          <div class="top-actions">
+            <button class="ghost-btn"><i data-lucide="map-pin-plus"></i><span>Novo bairro</span></button>
+            <button class="primary-btn"><i data-lucide="save"></i><span>Salvar cliente</span></button>
+          </div>
+        </div>
+
+        <div class="customer-register-grid">
+          <section class="panel product-form-card">
+            <div class="form-title"><i data-lucide="user-round"></i><span>Dados do cliente</span></div>
+            <div class="product-form-grid">
+              <label>Código<input value="000245" /></label>
+              <label>Tipo<select><option>Consumidor</option><option>Empresa</option></select></label>
+              <label class="span-2">Nome/Razão social<input value="Mariana Lopes" /></label>
+              <label>CPF/CNPJ<input value="123.456.789-00" /></label>
+              <label>Telefone<input value="(33) 99999-8080" /></label>
+              <label>WhatsApp<input value="(33) 98888-7070" /></label>
+              <label>E-mail<input value="mariana@email.com" /></label>
+              <label class="span-2">Observação<textarea>Cliente prefere entrega sem contato e pagamento via PIX.</textarea></label>
+            </div>
+          </section>
+
+          <section class="panel product-form-card">
+            <div class="form-title"><i data-lucide="map-pinned"></i><span>Endereço e taxa de entrega</span></div>
+            <div class="product-form-grid">
+              <label>CEP<input value="35164-000" /></label>
+              <label class="span-2">Endereço<input value="Rua das Flores" /></label>
+              <label>Número<input value="120" /></label>
+              <label>Complemento<input value="Casa" /></label>
+              <label>Bairro
+                <select id="customer-district">
+                  <option value="5">Bethânia - R$ 5,00</option>
+                  <option value="10">Centro - R$ 10,00</option>
+                  <option value="7">Caravelas - R$ 7,00</option>
+                </select>
+              </label>
+              <label>Cidade<input value="Ipatinga" /></label>
+              <label>UF<input value="MG" /></label>
+              <label>Taxa entrega<input id="customer-delivery-fee" value="R$ 5,00" readonly /></label>
+              <label>Compra exemplo<input id="customer-order-value" value="86,80" /></label>
+              <label>Total delivery<input id="customer-delivery-total" value="R$ 91,80" readonly /></label>
+            </div>
+          </section>
+
+          <section class="panel product-form-card">
+            <div class="form-title"><i data-lucide="map"></i><span>Bairros cadastrados</span></div>
+            <div class="table-panel flat-table">
+              <div class="data-row header"><span>Bairro</span><span>Taxa</span><span>Tempo médio</span><span>Status</span></div>
+              <div class="data-row"><span>Bethânia</span><span>R$ 5,00</span><span>35 min</span><span>Ativo</span></div>
+              <div class="data-row"><span>Centro</span><span>R$ 10,00</span><span>25 min</span><span>Ativo</span></div>
+              <div class="data-row"><span>Caravelas</span><span>R$ 7,00</span><span>40 min</span><span>Ativo</span></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="suppliers-register" class="view">
+        <div class="section-head">
+          <h2>Cadastro de fornecedores</h2>
+          <button class="primary-btn"><i data-lucide="save"></i><span>Salvar fornecedor</span></button>
+        </div>
+        <div class="customer-register-grid">
+          <section class="panel product-form-card">
+            <div class="form-title"><i data-lucide="truck"></i><span>Dados do fornecedor</span></div>
+            <div class="product-form-grid">
+              <label>Código<input value="000032" /></label>
+              <label>CNPJ<input value="12.345.678/0001-90" /></label>
+              <label class="span-2">Razão social<input value="IGS Distribuidora de Alimentos" /></label>
+              <label>Nome fantasia<input value="IGS Distribuidora" /></label>
+              <label>Inscrição estadual<input value="123456789" /></label>
+              <label>Telefone<input value="(33) 3333-2020" /></label>
+              <label>WhatsApp<input value="(33) 99999-2020" /></label>
+              <label>E-mail<input value="compras@igsdistribuidora.com.br" /></label>
+              <label>Categoria<select><option>Alimentos</option><option>Bebidas</option><option>Embalagens</option><option>Serviços</option></select></label>
+              <label>Prazo pagamento<select><option>7 dias</option><option>14 dias</option><option>30 dias</option></select></label>
+            </div>
+          </section>
+
+          <section class="panel product-form-card">
+            <div class="form-title"><i data-lucide="map-pin"></i><span>Endereço e contato comercial</span></div>
+            <div class="product-form-grid">
+              <label>CEP<input value="35160-000" /></label>
+              <label class="span-2">Endereço<input value="Avenida Industrial" /></label>
+              <label>Número<input value="850" /></label>
+              <label>Bairro<input value="Distrito Industrial" /></label>
+              <label>Cidade<input value="Ipatinga" /></label>
+              <label>UF<input value="MG" /></label>
+              <label>Contato<input value="Roberto Silva" /></label>
+              <label class="span-2">Observação<textarea>Fornecedor principal para carnes, queijos e embalagens.</textarea></label>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="groups-old" class="view">
+        <div class="section-head">
+          <h2>Cadastro de grupos</h2>
+          <button class="primary-btn"><i data-lucide="plus"></i><span>Novo grupo</span></button>
+        </div>
+        <div class="register-grid">
+          <article class="register-card accent-food"><i data-lucide="beef"></i><strong>Hambúrgueres</strong><span>12 produtos</span></article>
+          <article class="register-card accent-pizza"><i data-lucide="pizza"></i><strong>Pizzas</strong><span>18 produtos</span></article>
+          <article class="register-card accent-drink"><i data-lucide="beer"></i><strong>Bebidas</strong><span>24 produtos</span></article>
+          <article class="register-card accent-dessert"><i data-lucide="ice-cream-cone"></i><strong>Sobremesas</strong><span>8 produtos</span></article>
+        </div>
+      </section>
+
+      <section id="groups" class="view">
+        <div class="section-head">
+          <h2>Cadastro de grupos</h2>
+          <button class="primary-btn" data-group-action="save"><i data-lucide="save"></i><span>Salvar grupo</span></button>
+        </div>
+        <div class="group-register-layout">
+          <section class="panel product-form-card">
+            <div class="form-title"><i data-lucide="layers-3"></i><span>Ficha do grupo</span></div>
+            <div class="product-form-grid">
+              <label>Codigo<input id="group-code" value="001" /></label>
+              <label class="span-2">Nome do grupo<input id="group-name" value="AGUA" /></label>
+              <label>Tipo
+                <select id="group-type">
+                  <option>Bebidas</option>
+                  <option>Alimentos</option>
+                  <option>Sobremesas</option>
+                  <option>Bomboniere</option>
+                  <option>Servicos</option>
+                </select>
+              </label>
+              <label>Setor impressao
+                <select id="group-sector">
+                  <option>Copa</option>
+                  <option>Bar</option>
+                  <option>Cozinha</option>
+                  <option>Choperia</option>
+                  <option>Churrasqueira</option>
+                  <option>Caixa</option>
+                </select>
+              </label>
+              <label>Icone
+                <select id="group-icon">
+                  <option value="droplets">Agua</option>
+                  <option value="cup-soda">Suco/Refrigerante</option>
+                  <option value="pizza">Pizza</option>
+                  <option value="sandwich">Lanche</option>
+                  <option value="utensils">Porcoes</option>
+                  <option value="ice-cream-cone">Sorvete</option>
+                  <option value="candy">Balas</option>
+                </select>
+              </label>
+              <label>Status
+                <select id="group-status">
+                  <option>Ativo</option>
+                  <option>Inativo</option>
+                </select>
+              </label>
+              <label>Ordem<input id="group-order" value="1" /></label>
+              <label class="span-2">Observacao<textarea id="group-notes">Grupo usado no cardapio, PDV e impressao setorizada.</textarea></label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Mercadorias</p>
+                <h2>Grupos cadastrados</h2>
+              </div>
+              <button class="ghost-btn" data-group-action="new"><i data-lucide="plus"></i><span>Novo</span></button>
+            </div>
+            <div class="group-grid" id="group-grid"></div>
+          </section>
+
+          <section class="table-panel group-table">
+            <div class="data-row header"><span>Grupo</span><span>Tipo</span><span>Impressao</span><span>Status</span></div>
+            <div id="group-table"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="ingredients" class="view">
+        <div class="section-head">
+          <h2>Cadastro de ingredientes</h2>
+          <button class="primary-btn"><i data-lucide="plus"></i><span>Novo ingrediente</span></button>
+        </div>
+        <div class="table-panel">
+          <div class="data-row header"><span>Ingrediente</span><span>Unidade</span><span>Estoque</span><span>Custo médio</span></div>
+          <div class="data-row"><span>Carne blend</span><span>kg</span><span>18,500</span><span>R$ 31,80</span></div>
+          <div class="data-row"><span>Queijo mussarela</span><span>kg</span><span>2,400</span><span>R$ 28,40</span></div>
+          <div class="data-row"><span>Molho especial</span><span>ml</span><span>850</span><span>R$ 0,04</span></div>
+        </div>
+      </section>
+
+      <section id="payment-methods" class="view">
+        <div class="section-head">
+          <h2>Formas de pagamento</h2>
+          <button class="primary-btn"><i data-lucide="plus"></i><span>Nova forma</span></button>
+        </div>
+        <div class="register-grid">
+          <article class="register-card"><i data-lucide="banknote"></i><strong>Dinheiro</strong><span>Troco habilitado</span></article>
+          <article class="register-card"><i data-lucide="qr-code"></i><strong>PIX</strong><span>Integração pronta</span></article>
+          <article class="register-card"><i data-lucide="credit-card"></i><strong>Cartão</strong><span>Crédito e débito</span></article>
+          <article class="register-card"><i data-lucide="hand-coins"></i><strong>Fiado</strong><span>Conta cliente</span></article>
+        </div>
+      </section>
+
+      <section id="chart-accounts" class="view">
+        <div class="section-head">
+          <h2>Plano de contas</h2>
+          <button class="primary-btn"><i data-lucide="plus"></i><span>Nova conta</span></button>
+        </div>
+        <div class="table-panel">
+          <div class="data-row header"><span>Conta</span><span>Tipo</span><span>Categoria</span><span>Status</span></div>
+          <div class="data-row"><span>Venda salão</span><span>Receita</span><span>Operacional</span><span>Ativa</span></div>
+          <div class="data-row"><span>Venda delivery</span><span>Receita</span><span>Delivery</span><span>Ativa</span></div>
+          <div class="data-row"><span>Fornecedor bebidas</span><span>Despesa</span><span>Insumos</span><span>Ativa</span></div>
+          <div class="data-row"><span>Marketing</span><span>Despesa</span><span>Comercial</span><span>Ativa</span></div>
+        </div>
+      </section>
+
+      <section id="cash-open" class="view">
+        <div class="section-head">
+          <h2>Abertura de caixa</h2>
+          <button class="primary-btn"><i data-lucide="play-circle"></i><span>Abrir caixa</span></button>
+        </div>
+        <div class="cash-layout">
+          <section class="panel cash-summary">
+            <i data-lucide="safe"></i>
+            <p class="eyebrow">Caixa principal</p>
+            <h2>Turno da manhã</h2>
+            <strong>R$ 250,00</strong>
+            <span class="muted">Valor inicial sugerido para troco</span>
+          </section>
+          <section class="panel form-panel">
+            <label>Operador<input value="Caixa 01 - Ana" /></label>
+            <label>Valor de abertura<input value="250,00" /></label>
+            <label>Observação<textarea>Troco inicial conferido.</textarea></label>
+          </section>
+        </div>
+      </section>
+
+      <section id="cash-close" class="view">
+        <div class="section-head">
+          <h2>Fechamento de caixa</h2>
+          <button class="primary-btn"><i data-lucide="check-circle-2"></i><span>Conferir fechamento</span></button>
+        </div>
+        <div class="cash-layout">
+          <section class="panel cash-summary">
+            <i data-lucide="calculator"></i>
+            <p class="eyebrow">Resumo do turno</p>
+            <h2>Total apurado</h2>
+            <strong>R$ 4.820,75</strong>
+            <span class="muted">Dinheiro, PIX, cartões e fiado</span>
+          </section>
+          <section class="table-panel">
+            <div class="data-row header"><span>Forma</span><span>Sistema</span><span>Conferido</span><span>Diferença</span></div>
+            <div class="data-row"><span>Dinheiro</span><span>R$ 920,00</span><span>R$ 920,00</span><span>R$ 0,00</span></div>
+            <div class="data-row"><span>PIX</span><span>R$ 1.240,75</span><span>R$ 1.240,75</span><span>R$ 0,00</span></div>
+            <div class="data-row"><span>Cartão</span><span>R$ 2.660,00</span><span>R$ 2.660,00</span><span>R$ 0,00</span></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="cash-withdraw" class="view">
+        <div class="section-head">
+          <h2>Sangria</h2>
+          <button class="primary-btn"><i data-lucide="arrow-up-from-line"></i><span>Registrar sangria</span></button>
+        </div>
+        <div class="cash-layout">
+          <section class="panel cash-summary danger">
+            <i data-lucide="arrow-up-from-line"></i>
+            <p class="eyebrow">Retirada</p>
+            <h2>Saída de dinheiro</h2>
+            <strong>R$ 500,00</strong>
+            <span class="muted">Use para retirada segura durante o turno</span>
+          </section>
+          <section class="panel form-panel">
+            <label>Motivo<input value="Retirada para cofre" /></label>
+            <label>Valor<input value="500,00" /></label>
+            <label>Responsável<input value="Gerente - Bruno" /></label>
+          </section>
+        </div>
+      </section>
+
+      <section id="cash-reinforce" class="view">
+        <div class="section-head">
+          <h2>Reforço de caixa</h2>
+          <button class="primary-btn"><i data-lucide="arrow-down-to-line"></i><span>Registrar reforço</span></button>
+        </div>
+        <div class="cash-layout">
+          <section class="panel cash-summary success">
+            <i data-lucide="arrow-down-to-line"></i>
+            <p class="eyebrow">Entrada</p>
+            <h2>Mais troco</h2>
+            <strong>R$ 150,00</strong>
+            <span class="muted">Use quando o caixa precisar de complemento</span>
+          </section>
+          <section class="panel form-panel">
+            <label>Origem<input value="Cofre administrativo" /></label>
+            <label>Valor<input value="150,00" /></label>
+            <label>Observação<textarea>Reforço para troco no horário de pico.</textarea></label>
+          </section>
+        </div>
+      </section>
+
+      <section id="finance" class="view">
+        <div class="section-head">
+          <h2>Financeiro</h2>
+          <button class="primary-btn" data-view="cash-close"><i data-lucide="landmark"></i><span>Fechar caixa</span></button>
+        </div>
+        <div class="list-panel" id="finance-list"></div>
+      </section>
+
+      <section id="accounts-payable" class="view">
+        <div class="section-head">
+          <h2>Contas a pagar</h2>
+          <button class="primary-btn"><i data-lucide="plus"></i><span>Nova despesa</span></button>
+        </div>
+        <div class="cash-layout">
+          <section class="panel cash-summary danger">
+            <i data-lucide="file-minus-2"></i>
+            <p class="eyebrow">A pagar este mês</p>
+            <h2>Despesas abertas</h2>
+            <strong>R$ 3.480,90</strong>
+            <span class="muted">Fornecedores, impostos, água, luz e folha</span>
+          </section>
+          <section class="table-panel">
+            <div class="data-row header"><span>Descrição</span><span>Vencimento</span><span>Valor</span><span>Status</span></div>
+            <div class="data-row"><span>Fornecedor bebidas</span><span>10/05</span><span>R$ 740,00</span><span>Aberta</span></div>
+            <div class="data-row"><span>Energia elétrica</span><span>12/05</span><span>R$ 510,90</span><span>Vencida</span></div>
+            <div class="data-row"><span>Fornecedor carnes</span><span>18/05</span><span>R$ 1.880,00</span><span>Aberta</span></div>
+            <div class="data-row"><span>Marketing delivery</span><span>22/05</span><span>R$ 350,00</span><span>Aberta</span></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="accounts-receivable" class="view">
+        <div class="section-head">
+          <h2>Contas a receber</h2>
+          <button class="primary-btn"><i data-lucide="plus"></i><span>Novo recebimento</span></button>
+        </div>
+        <div class="cash-layout">
+          <section class="panel cash-summary success">
+            <i data-lucide="file-plus-2"></i>
+            <p class="eyebrow">A receber este mês</p>
+            <h2>Receitas pendentes</h2>
+            <strong>R$ 2.760,20</strong>
+            <span class="muted">Delivery, cartão, PIX pendente, fiado e convênios</span>
+          </section>
+          <section class="table-panel">
+            <div class="data-row header"><span>Descrição</span><span>Previsão</span><span>Valor</span><span>Status</span></div>
+            <div class="data-row"><span>Cartão crédito</span><span>11/05</span><span>R$ 1.880,20</span><span>Pendente</span></div>
+            <div class="data-row"><span>Cliente fiado - Mesa 04</span><span>15/05</span><span>R$ 212,90</span><span>Aberta</span></div>
+            <div class="data-row"><span>Convênio empresa</span><span>20/05</span><span>R$ 447,10</span><span>Aberta</span></div>
+            <div class="data-row"><span>Delivery pendente</span><span>Hoje</span><span>R$ 220,00</span><span>Pendente</span></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="digital-menu" class="view">
+        <div class="section-head">
+          <h2>Cardápio digital QR</h2>
+          <button class="primary-btn"><i data-lucide="qr-code"></i><span>Gerar QR Code</span></button>
+        </div>
+        <div class="split">
+          <div class="panel">
+            <h2>Publicação</h2>
+            <p class="muted">Cardápio por categoria, fotos, adicionais, observações e pedido direto da mesa ou delivery.</p>
+          </div>
+          <div class="panel menu-preview">
+            <span class="status free">Online</span>
+            <h2>IGS Burger House</h2>
+            <div class="recipe-card">X-Burger Artesanal - R$ 29,90</div>
+            <div class="recipe-card">Pizza Calabresa - R$ 54,90</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="print-settings" class="view">
+        <div class="section-head">
+          <h2>Impressão setorizada</h2>
+          <button class="primary-btn"><i data-lucide="printer-check"></i><span>Testar impressoras</span></button>
+        </div>
+        <div class="register-grid">
+          <article class="register-card"><i data-lucide="chef-hat"></i><strong>Cozinha</strong><span>ESC/POS 80mm</span></article>
+          <article class="register-card"><i data-lucide="beer"></i><strong>Bar</strong><span>Rede</span></article>
+          <article class="register-card"><i data-lucide="coffee"></i><strong>Copa</strong><span>USB</span></article>
+          <article class="register-card"><i data-lucide="receipt"></i><strong>Caixa</strong><span>NFC-e / SAT</span></article>
+        </div>
+      </section>
+
+      <section id="reports" class="view">
+        <div class="section-head">
+          <h2>Relatórios gerenciais</h2>
+          <div class="top-actions">
+            <button class="ghost-btn"><i data-lucide="calendar-range"></i><span>Hoje</span></button>
+            <button class="primary-btn"><i data-lucide="download"></i><span>Exportar</span></button>
+          </div>
+        </div>
+        <div class="report-kpis">
+          <article><span>Faturamento</span><strong>R$ 48.276,40</strong><small>+18% vs semana anterior</small></article>
+          <article><span>Lucro estimado</span><strong>R$ 17.920,10</strong><small>Margem 37,1%</small></article>
+          <article><span>Ticket médio</span><strong>R$ 58,70</strong><small>823 vendas</small></article>
+          <article><span>Despesas</span><strong>R$ 12.440,80</strong><small>26% do faturamento</small></article>
+          <article><span>Perdas</span><strong>R$ 386,20</strong><small>0,8% do faturamento</small></article>
+        </div>
+
+        <div class="reports-layout">
+          <section class="panel report-panel wide">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">BI operacional</p>
+                <h2>Vendas por canal</h2>
+              </div>
+            </div>
+            <div class="channel-bars">
+              <div style="--value: 82"><span>Salão</span><strong>R$ 21.840,00</strong></div>
+              <div style="--value: 64"><span>Delivery</span><strong>R$ 15.620,40</strong></div>
+              <div style="--value: 46"><span>Balcão/PDV</span><strong>R$ 8.916,00</strong></div>
+              <div style="--value: 18"><span>QR Mesa</span><strong>R$ 1.900,00</strong></div>
+            </div>
+          </section>
+
+          <section class="panel report-panel">
+            <p class="eyebrow">Pico</p>
+            <h2>Horários de movimento</h2>
+            <div class="heat-grid">
+              <span>11h</span><b class="heat-2"></b><span>12h</span><b class="heat-4"></b><span>13h</span><b class="heat-5"></b>
+              <span>18h</span><b class="heat-3"></b><span>19h</span><b class="heat-5"></b><span>20h</span><b class="heat-4"></b>
+            </div>
+          </section>
+
+          <section class="panel report-panel">
+            <p class="eyebrow">Ranking</p>
+            <h2>Produtos mais vendidos</h2>
+            <div class="rank-list">
+              <div><strong>1</strong><span>X-Burger Artesanal</span><em>186 un</em></div>
+              <div><strong>2</strong><span>Pizza Calabresa</span><em>142 un</em></div>
+              <div><strong>3</strong><span>Batata Cheddar</span><em>118 un</em></div>
+              <div><strong>4</strong><span>Suco Natural</span><em>96 un</em></div>
+            </div>
+          </section>
+
+          <section class="panel report-panel">
+            <p class="eyebrow">Equipe</p>
+            <h2>Vendas por garçom</h2>
+            <div class="rank-list">
+              <div><strong>Ana</strong><span>R$ 8.420,00</span><em>5,0%</em></div>
+              <div><strong>Diego</strong><span>R$ 7.180,50</span><em>4,5%</em></div>
+              <div><strong>Carol</strong><span>R$ 6.920,80</span><em>4,0%</em></div>
+              <div><strong>Bruno</strong><span>R$ 4.760,90</span><em>3,5%</em></div>
+            </div>
+          </section>
+
+          <section class="panel report-panel">
+            <p class="eyebrow">Delivery</p>
+            <h2>Bairros e entregadores</h2>
+            <div class="rank-list">
+              <div><strong>Centro</strong><span>74 pedidos</span><em>R$ 10,00</em></div>
+              <div><strong>Bethânia</strong><span>62 pedidos</span><em>R$ 5,00</em></div>
+              <div><strong>Caravelas</strong><span>48 pedidos</span><em>R$ 7,00</em></div>
+              <div><strong>Rafa</strong><span>39 entregas</span><em>R$ 195,00</em></div>
+            </div>
+          </section>
+
+          <section class="panel report-panel wide">
+            <p class="eyebrow">Financeiro</p>
+            <h2>Fluxo de caixa e contas</h2>
+            <div class="finance-report-grid">
+              <div><span>Entradas</span><strong>R$ 48.276,40</strong></div>
+              <div><span>Saídas</span><strong>R$ 12.440,80</strong></div>
+              <div><span>A receber</span><strong>R$ 2.760,20</strong></div>
+              <div><span>A pagar</span><strong>R$ 3.480,90</strong></div>
+            </div>
+          </section>
+
+          <section class="panel report-panel">
+            <p class="eyebrow">Estoque</p>
+            <h2>Alertas e perdas</h2>
+            <div class="rank-list">
+              <div><strong>Queijo</strong><span>2,4 kg</span><em>baixo</em></div>
+              <div><strong>Molho</strong><span>850 ml</span><em>baixo</em></div>
+              <div><strong>Perda produção</strong><span>R$ 186,20</span><em>cozinha</em></div>
+              <div><strong>Vencidos</strong><span>R$ 200,00</span><em>estoque</em></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

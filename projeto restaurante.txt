@@ -1,0 +1,124 @@
+IGS Restaurant PRO - Ideias pendentes e proximos passos
+
+Como usar este arquivo:
+- Pode acrescentar novas ideias aqui sempre que lembrar.
+- Quando uma ideia virar tela, API ou estrutura no sistema, vou remover daqui ou mover para "ja aproveitado".
+- Manter este arquivo curto ajuda a nao perder prioridade.
+
+JA APROVEITADO NO SISTEMA
+- Dashboard inicial com indicadores, grafico e alertas.
+- Controle visual de mesas com status.
+- Comandas e produtos.
+- PDV de venda rapida balcao.
+- Finalizacao de venda com pagamentos mistos: dinheiro, credito, debito, vale alimentacao, PIX e a prazo.
+- Cupom 80mm na tela ao finalizar venda, com acao de imprimir e retorno para venda limpa.
+- Caixa: abertura, fechamento, sangria e reforco.
+- Cadastro: emitente, produtos, clientes, fornecedores, mesas, comandas, estoque, grupos, ingredientes, formas de pagamento e plano de contas.
+- Cadastro de mesas com geracao automatica por quantidade.
+- Cadastro de comandas com geracao automatica por quantidade, numero inicial, tipo e prefixo.
+- Cadastro de produtos com ficha completa, foto, estoque, associacao, dados fiscais e setor de impressao/producao.
+- Impressao por setor: cozinha, bar, choperia, copa, churrasqueira e caixa.
+- Delivery com cliente, bairro, taxa de entrega e total com entrega.
+- Base para importar ceps_rp.sql.
+- Financeiro: contas a pagar e contas a receber.
+- Relatorios gerenciais com KPIs, vendas por canal, horarios de pico, produtos, garcons, delivery, financeiro, estoque e perdas.
+- Cardapio digital QR como tela inicial.
+- Estrutura FastAPI + PostgreSQL + pasta definitiva em C:\IGS\RestaurantPRO.
+
+PENDENTE - OPERACAO DE SALAO
+- Transferencia de mesa.
+- Juncao de mesas.
+- Divisao de conta.
+- Consumo parcial da mesa.
+- Impressao parcial.
+- Fechamento rapido da mesa.
+- Historico da comanda.
+- Adicionais e observacoes por item.
+
+PENDENTE - APP GARCOM / PWA
+- Tela mobile para garcom abrir mesa.
+- Tela mobile para garcom fazer pedido.
+- Envio direto para cozinha, bar, copa, choperia e churrasqueira.
+- Consulta de status do preparo.
+- Botao para chamar impressao automatica.
+- Login/permissao por garcom.
+
+PENDENTE - IMPRESSAO
+- Configurar impressoras reais USB, rede e Bluetooth.
+- Layout ESC/POS 80mm.
+- Impressao de producao por setor.
+- Impressao com senha do pedido, mesa, garcom e tempo.
+- Teste de impressora por setor.
+
+PENDENTE - DELIVERY
+- Cadastro de entregadores/motoqueiros.
+- Comissao por entrega.
+- Entregas pendentes, em rota, finalizadas e retornadas.
+- Prestacao de contas do entregador.
+- Controle financeiro do entregador.
+- Pedido por WhatsApp.
+- Pedido por app/cardapio proprio.
+- Historico completo de pedidos do cliente.
+
+PENDENTE - CARDAPIO DIGITAL
+- Fotos reais dos produtos.
+- Categorias e adicionais.
+- Promocoes.
+- Pedido direto da mesa via QR.
+- Pedido delivery online.
+- Integracao WhatsApp.
+- Integracao PIX.
+
+PENDENTE - ESTOQUE E PRODUCAO
+- Separar insumos de mercadorias para revenda.
+- Ficha tecnica/receita com baixa automatica.
+- Controle por gramas, kg, ml, litro e unidade.
+- Controle de validade.
+- Controle de perdas: vencido, estragado, quebra operacional, uso e consumo, perda de producao e danificado.
+- Relatorio de perdas por periodo, setor, funcionario e impacto financeiro.
+- CMV: custo de mercadorias vendidas.
+- Curva ABC de produtos.
+
+PENDENTE - FINANCEIRO
+- DRE gerencial.
+- Fluxo de caixa detalhado por periodo.
+- Contas pagas e vencidas.
+- Recebimentos por cartao, PIX, fiado e convenio.
+- Baixa de contas a pagar/receber.
+- Conciliacao com fechamento de caixa.
+
+PENDENTE - RELATORIOS
+- Vendas e faturamento diario/semanal/mensal.
+- Relatorio de formas de pagamento.
+- Ticket medio por canal.
+- Lucro por produto.
+- CMV por produto e categoria.
+- Ranking de produtos por quantidade e margem.
+- Clientes que mais compram.
+- Relatorio de fiado/a prazo.
+- Relatorio de cancelamentos de item e cupom.
+- Relatorio de descontos e acrescimos.
+- Relatorio de desempenho por funcionario.
+- Relatorio de entrega por bairro e motoqueiro.
+- Relatorio de estoque minimo.
+- Relatorio de desperdicios.
+- DRE gerencial.
+
+PENDENTE - SEGURANCA E ADMINISTRACAO
+- Controle de usuarios.
+- Permissoes por perfil: admin, gerente, caixa, garcom, cozinha, bar e entregador.
+- Log de operacoes.
+- Auditoria de cancelamentos, descontos, sangrias e fechamento de caixa.
+- Backup automatico.
+- Backup programado local.
+- Backup em nuvem.
+
+PENDENTE - VERSOES FUTURAS
+- Multiempresa.
+- Franquias.
+- BI avancado.
+- WhatsApp automatico.
+- IA de vendas.
+- Sugestao de compras por estoque e giro.
+
+https://controlenamao.com.br/segmentos/sistema-para-lanchonetes/ site para analisar e ver se tem algo que nos ajude

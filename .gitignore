@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Local config and secrets
+.env
+.vscode/settings.json
+
+# OS / local files
+Thumbs.db
+Desktop.ini
+*.log
+
+# Large local binary
+ngrok.exe
