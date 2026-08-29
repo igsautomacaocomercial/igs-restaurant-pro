@@ -20,16 +20,30 @@ SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 database_available = False
 
 
-def init_database() -> bool:
+def refresh_database_available() -> bool:
     global database_available
     try:
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
-        Base.metadata.create_all(bind=engine)
-        database_available = True
     except SQLAlchemyError:
         database_available = False
+    else:
+        database_available = True
     return database_available
+
+
+def init_database() -> bool:
+    global database_available
+    if not refresh_database_available():
+        return False
+
+    try:
+        Base.metadata.create_all(bind=engine)
+    except SQLAlchemyError:
+        database_available = False
+        return False
+
+    return refresh_database_available()
 
 
 @contextmanager
@@ -43,4 +57,3 @@ def session_scope():
         raise
     finally:
         session.close()
-
