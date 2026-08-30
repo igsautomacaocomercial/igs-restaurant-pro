@@ -1,0 +1,46 @@
+IGSRP - Mapa de tabelas e funcoes
+
+Banco: IGSRP
+Referencia visual: ERP desktop com menu superior, tiles de cadastro e area central ampla.
+
+Notas de mapeamento inicial:
+
+- empresa: dados do emitente / empresa principal.
+- material: cadastro de produtos e insumos.
+- setor_estoque_material: controle de estoque do material.
+- categoria: categorias principais de cadastro.
+
+Mapeamento conhecido do sistema atual:
+
+- companies -> empresa
+- emitters -> dados fiscais do emitente (legado pode virar empresa)
+- users -> usuarios
+- sectors -> setores / impressao por setor
+- ceps -> base de CEPs
+- delivery_districts -> bairros de entrega
+- dining_tables -> mesas
+- service_tabs -> comandas
+- customers -> clientes
+- suppliers -> fornecedores
+- product_categories -> categoria
+- products -> material / produtos
+- ingredients -> insumos
+- recipes -> ficha tecnica / consumo por produto
+- orders -> pedidos
+- order_items -> itens do pedido
+- deliveries -> entregas
+- cash_sessions -> caixa atual
+- payments -> pagamentos
+- financial_entries -> financeiro
+- stock_movements -> movimentacao de estoque
+- audit_logs -> auditoria
+
+Pendencias para confirmar com prints futuros:
+
+- quais telas do legado usam cada modulo.
+- nomes exatos de tabelas adicionais que ainda nao foram mapeadas.
+- relacao entre cadastro, estoque e financeiro no sistema antigo.
+
+Observacao:
+
+- evitar commitar credenciais em arquivo de consulta.
