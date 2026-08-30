@@ -58,7 +58,7 @@
               </div>
 
               <div class="nav-group" data-menu-group="cadastros">
-                <button class="nav-link nav-parent" type="button" data-menu-toggle data-nav-item aria-haspopup="true" aria-expanded="false">
+                <button class="nav-link nav-parent" type="button" data-view="cadastros" data-menu-toggle data-nav-item aria-haspopup="true" aria-expanded="false">
                   <span>Cadastros</span><i class="chevron" data-lucide="chevron-down"></i>
                 </button>
                 <div class="submenu" id="cadastros-menu" role="menu" aria-label="Menu Cadastros">
@@ -106,7 +106,48 @@
           </div>
         </header>
 
-      <section id="dashboard" class="view active">
+      <section id="welcome" class="view active">
+        <div class="welcome-hero">
+          <div>
+            <p class="eyebrow">IGS Restaurant PRO</p>
+            <h2>Bem-vindo ao sistema</h2>
+            <p class="muted">Acesso rápido aos módulos principais do restaurante. Escolha uma área para iniciar o trabalho.</p>
+          </div>
+          <div class="welcome-status">
+            <span>Empresa: <strong id="company-name-hero">IGS Burger House</strong></span>
+            <span id="db-mode-hero">modo demonstração</span>
+          </div>
+        </div>
+
+        <div class="welcome-grid">
+          <button class="welcome-card" data-view="cadastros"><i data-lucide="folder-kanban"></i><strong>Cadastros</strong><span>Produtos, clientes e empresa</span></button>
+          <button class="welcome-card" data-view="pdv"><i data-lucide="shopping-cart"></i><strong>PDV</strong><span>Venda rápida e caixa</span></button>
+          <button class="welcome-card" data-view="tables"><i data-lucide="utensils"></i><strong>Mesas</strong><span>Mapa operacional</span></button>
+          <button class="welcome-card" data-view="delivery"><i data-lucide="bike"></i><strong>Delivery</strong><span>Pedidos e entregas</span></button>
+          <button class="welcome-card" data-view="finance"><i data-lucide="landmark"></i><strong>Financeiro</strong><span>Caixa e contas</span></button>
+          <button class="welcome-card" data-view="reports"><i data-lucide="bar-chart-3"></i><strong>Relatórios</strong><span>Indicadores gerenciais</span></button>
+        </div>
+
+        <div class="welcome-footer-panels">
+          <section class="panel welcome-panel">
+            <p class="eyebrow">Operação</p>
+            <h2>Fluxo rápido</h2>
+            <div class="welcome-timeline">
+              <div><span>1</span><strong>Abra um módulo</strong><em>Cadastros, PDV ou Delivery</em></div>
+              <div><span>2</span><strong>Trabalhe na tela</strong><em>Comandos e atalhos já prontos</em></div>
+              <div><span>3</span><strong>Finalize a venda</strong><em>Caixa e relatórios acompanham</em></div>
+            </div>
+          </section>
+
+          <section class="panel welcome-panel gradient-panel">
+            <p class="eyebrow">Identidade</p>
+            <h2>ERP de restaurante</h2>
+            <p class="muted">Interface pronta para operação contínua, com visual limpo, atalhos grandes e foco em produtividade.</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="dashboard" class="view">
         <div class="metrics" id="metrics"></div>
         <div class="content-grid">
           <section class="panel wide">
@@ -132,6 +173,26 @@
               <div><i data-lucide="receipt-text"></i><span>Fechamento de caixa pendente</span></div>
             </div>
           </section>
+        </div>
+      </section>
+
+      <section id="cadastros" class="view">
+        <div class="section-head">
+          <h2>Cadastros</h2>
+          <button class="primary-btn" data-view="products-register"><i data-lucide="hamburger"></i><span>Abrir produtos</span></button>
+        </div>
+        <div class="register-grid cadastro-launcher-grid">
+          <button class="register-card" data-view="products-register"><i data-lucide="hamburger"></i><strong>Produtos</strong><span>Material e venda</span></button>
+          <button class="register-card" data-view="groups"><i data-lucide="layers-3"></i><strong>Categorias</strong><span>Classificação</span></button>
+          <button class="register-card" data-view="customers-register"><i data-lucide="user-round-plus"></i><strong>Clientes</strong><span>Cadastro básico</span></button>
+          <button class="register-card" data-view="suppliers-register"><i data-lucide="truck"></i><strong>Fornecedores</strong><span>Compras</span></button>
+          <button class="register-card" data-view="tables-register"><i data-lucide="table-2"></i><strong>Mesas</strong><span>Salão e áreas</span></button>
+          <button class="register-card" data-view="tabs-register"><i data-lucide="badge"></i><strong>Comandas</strong><span>QR / física</span></button>
+          <button class="register-card" data-view="stock"><i data-lucide="package-search"></i><strong>Estoque</strong><span>Material</span></button>
+          <button class="register-card" data-view="ingredients"><i data-lucide="wheat"></i><strong>Material</strong><span>Insumos</span></button>
+          <button class="register-card" data-view="payment-methods"><i data-lucide="credit-card"></i><strong>Pagamentos</strong><span>Formas</span></button>
+          <button class="register-card" data-view="chart-accounts"><i data-lucide="book-open-check"></i><strong>Contas</strong><span>Plano financeiro</span></button>
+          <button class="register-card" data-view="emitter-register"><i data-lucide="store"></i><strong>Empresa</strong><span>Dados fiscais</span></button>
         </div>
       </section>
 

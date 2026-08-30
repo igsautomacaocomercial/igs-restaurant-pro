@@ -1621,6 +1621,8 @@ async function boot() {
   const data = await fetch("/api/dashboard").then((response) => response.json());
   document.getElementById("db-mode").textContent = health.database === "postgres" ? "PostgreSQL conectado" : "modo demonstração";
   document.getElementById("company-name").textContent = data.company?.name || "modo demonstração";
+  document.getElementById("company-name-hero").textContent = data.company?.name || "modo demonstração";
+  document.getElementById("db-mode-hero").textContent = health.database === "postgres" ? "PostgreSQL conectado" : "modo demonstração";
   renderMetrics(data.summary);
   renderChart(data.chart);
   renderTables(getStoredTables(data.tables));
