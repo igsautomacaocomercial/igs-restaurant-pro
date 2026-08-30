@@ -9,82 +9,102 @@
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-mark">IGS</div>
-        <div>
-          <strong>Restaurant PRO</strong>
-          <span id="db-mode">conectando...</span>
-        </div>
-      </div>
+    <div class="app-frame">
+      <header class="app-header">
+        <div class="brand-row">
+          <div class="brand brand-inline">
+            <div class="brand-mark">IGS</div>
+            <div class="brand-copy">
+              <strong>IGS Restaurant PRO</strong>
+              <span id="company-name">IGS Burger House</span>
+              <small id="db-mode">conectando...</small>
+            </div>
+          </div>
 
-      <nav>
-        <button class="nav-item active" data-view="dashboard"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></button>
-        <button class="nav-item" data-view="tables"><i data-lucide="utensils"></i><span>Mesas</span></button>
-        <button class="nav-item" data-view="orders"><i data-lucide="clipboard-list"></i><span>Comandas</span></button>
-        <button class="nav-item" data-view="kitchen"><i data-lucide="chef-hat"></i><span>Produção</span></button>
-        <button class="nav-item" data-view="delivery"><i data-lucide="bike"></i><span>Delivery</span></button>
-        <button class="nav-item" data-view="pdv"><i data-lucide="monitor-dot"></i><span>PDV</span></button>
-
-        <div class="nav-group">
-          <button class="nav-item nav-parent" type="button" data-toggle-menu="caixa">
-            <i data-lucide="landmark"></i><span>Caixa</span><i class="chevron" data-lucide="chevron-down"></i>
-          </button>
-          <div class="submenu" id="caixa-menu">
-            <button class="nav-item sub-item" data-view="cash-open"><i data-lucide="lock-keyhole-open"></i><span>Abertura de caixa</span></button>
-            <button class="nav-item sub-item" data-view="cash-close"><i data-lucide="lock-keyhole"></i><span>Fechamento de caixa</span></button>
-            <button class="nav-item sub-item" data-view="cash-withdraw"><i data-lucide="arrow-up-from-line"></i><span>Sangria</span></button>
-            <button class="nav-item sub-item" data-view="cash-reinforce"><i data-lucide="arrow-down-to-line"></i><span>Reforço de caixa</span></button>
+          <div class="header-actions">
+            <span class="status-pill"><i data-lucide="activity"></i><span>Operação ativa</span></span>
+            <button class="icon-btn" title="Atualizar" data-action="refresh"><i data-lucide="refresh-cw"></i></button>
+            <button class="icon-btn" title="Notificações"><i data-lucide="bell"></i></button>
+            <button class="user-chip" type="button" aria-label="Usuário logado"><span>Ismael</span><i data-lucide="chevron-down"></i></button>
+            <button class="icon-btn" title="Configurações"><i data-lucide="settings-2"></i></button>
+            <button class="icon-btn danger-tone" title="Sair"><i data-lucide="log-out"></i></button>
           </div>
         </div>
 
-        <div class="nav-group open">
-          <button class="nav-item nav-parent" type="button" data-toggle-menu="cadastros">
-            <i data-lucide="folder-plus"></i><span>Cadastro</span><i class="chevron" data-lucide="chevron-down"></i>
+        <div class="menu-row">
+          <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false">
+            <i data-lucide="menu"></i><span>Menu</span>
           </button>
-          <div class="submenu" id="cadastros-menu">
-            <button class="nav-item sub-item" data-view="emitter-register"><i data-lucide="store"></i><span>Emitente</span></button>
-            <button class="nav-item sub-item" data-view="products-register"><i data-lucide="hamburger"></i><span>Produtos</span></button>
-            <button class="nav-item sub-item" data-view="customers-register"><i data-lucide="user-round-plus"></i><span>Clientes</span></button>
-            <button class="nav-item sub-item" data-view="suppliers-register"><i data-lucide="truck"></i><span>Fornecedores</span></button>
-            <button class="nav-item sub-item" data-view="tables-register"><i data-lucide="table-2"></i><span>Mesas</span></button>
-            <button class="nav-item sub-item" data-view="tabs-register"><i data-lucide="badge"></i><span>Comandas</span></button>
-            <button class="nav-item sub-item" data-view="stock"><i data-lucide="package-search"></i><span>Estoque</span></button>
-            <button class="nav-item sub-item" data-view="groups"><i data-lucide="layers-3"></i><span>Grupos</span></button>
-            <button class="nav-item sub-item" data-view="ingredients"><i data-lucide="wheat"></i><span>Ingredientes</span></button>
-            <button class="nav-item sub-item" data-view="payment-methods"><i data-lucide="credit-card"></i><span>Formas de pagamento</span></button>
-            <button class="nav-item sub-item" data-view="chart-accounts"><i data-lucide="book-open-check"></i><span>Plano de contas</span></button>
-          </div>
-        </div>
 
-        <div class="nav-group">
-          <button class="nav-item nav-parent" type="button" data-toggle-menu="financeiro">
-            <i data-lucide="wallet-cards"></i><span>Financeiro</span><i class="chevron" data-lucide="chevron-down"></i>
-          </button>
-          <div class="submenu" id="financeiro-menu">
-            <button class="nav-item sub-item" data-view="accounts-payable"><i data-lucide="file-minus-2"></i><span>Contas a pagar</span></button>
-            <button class="nav-item sub-item" data-view="accounts-receivable"><i data-lucide="file-plus-2"></i><span>Contas a receber</span></button>
-          </div>
-        </div>
-      </nav>
+          <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+            <div class="nav-scroll">
+              <button class="nav-link active" data-view="dashboard" data-nav-item aria-current="page"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></button>
+              <button class="nav-link" data-view="tables" data-nav-item><i data-lucide="utensils"></i><span>Mesas</span></button>
+              <button class="nav-link" data-view="orders" data-nav-item><i data-lucide="clipboard-list"></i><span>Comandas</span></button>
+              <button class="nav-link" data-view="kitchen" data-nav-item><i data-lucide="chef-hat"></i><span>Produção</span></button>
+              <button class="nav-link" data-view="delivery" data-nav-item><i data-lucide="bike"></i><span>Delivery</span></button>
+              <button class="nav-link nav-highlight" data-view="pdv" data-nav-item><i data-lucide="shopping-cart"></i><span>PDV</span></button>
 
-      <div class="quick-actions">
-        <button data-view="digital-menu"><i data-lucide="qr-code"></i><span>QR Cardápio</span></button>
-        <button data-view="print-settings"><i data-lucide="printer"></i><span>Impressão</span></button>
-      </div>
-    </aside>
+              <div class="nav-group" data-menu-group="caixa">
+                <button class="nav-link nav-parent" type="button" data-menu-toggle data-nav-item aria-haspopup="true" aria-expanded="false">
+                  <span>Caixa</span><i class="chevron" data-lucide="chevron-down"></i>
+                </button>
+                <div class="submenu" id="caixa-menu" role="menu" aria-label="Menu Caixa">
+                  <button class="nav-link sub-item" data-view="cash-open" data-nav-item role="menuitem"><i data-lucide="lock-keyhole-open"></i><span>Abertura de caixa</span></button>
+                  <button class="nav-link sub-item" data-view="cash-close" data-nav-item role="menuitem"><i data-lucide="lock-keyhole"></i><span>Fechamento de caixa</span></button>
+                  <button class="nav-link sub-item" data-view="cash-withdraw" data-nav-item role="menuitem"><i data-lucide="arrow-up-from-line"></i><span>Sangria</span></button>
+                  <button class="nav-link sub-item" data-view="cash-reinforce" data-nav-item role="menuitem"><i data-lucide="arrow-down-to-line"></i><span>Reforço de caixa</span></button>
+                </div>
+              </div>
 
-    <main class="app-shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Operação em tempo real</p>
-          <h1>IGS Restaurant PRO</h1>
-        </div>
-        <div class="top-actions">
-          <button class="icon-btn" title="Sincronizar" data-action="refresh"><i data-lucide="refresh-cw"></i></button>
-          <button class="primary-btn" data-view="orders"><i data-lucide="plus"></i><span>Novo pedido</span></button>
+              <div class="nav-group" data-menu-group="cadastros">
+                <button class="nav-link nav-parent" type="button" data-menu-toggle data-nav-item aria-haspopup="true" aria-expanded="false">
+                  <span>Cadastros</span><i class="chevron" data-lucide="chevron-down"></i>
+                </button>
+                <div class="submenu" id="cadastros-menu" role="menu" aria-label="Menu Cadastros">
+                  <button class="nav-link sub-item" data-view="emitter-register" data-nav-item role="menuitem"><i data-lucide="store"></i><span>Emitente</span></button>
+                  <button class="nav-link sub-item" data-view="products-register" data-nav-item role="menuitem"><i data-lucide="hamburger"></i><span>Produtos</span></button>
+                  <button class="nav-link sub-item" data-view="customers-register" data-nav-item role="menuitem"><i data-lucide="user-round-plus"></i><span>Clientes</span></button>
+                  <button class="nav-link sub-item" data-view="suppliers-register" data-nav-item role="menuitem"><i data-lucide="truck"></i><span>Fornecedores</span></button>
+                  <button class="nav-link sub-item" data-view="tables-register" data-nav-item role="menuitem"><i data-lucide="table-2"></i><span>Mesas</span></button>
+                  <button class="nav-link sub-item" data-view="tabs-register" data-nav-item role="menuitem"><i data-lucide="badge"></i><span>Comandas</span></button>
+                  <button class="nav-link sub-item" data-view="stock" data-nav-item role="menuitem"><i data-lucide="package-search"></i><span>Estoque</span></button>
+                  <button class="nav-link sub-item" data-view="groups" data-nav-item role="menuitem"><i data-lucide="layers-3"></i><span>Grupos</span></button>
+                  <button class="nav-link sub-item" data-view="ingredients" data-nav-item role="menuitem"><i data-lucide="wheat"></i><span>Ingredientes</span></button>
+                  <button class="nav-link sub-item" data-view="payment-methods" data-nav-item role="menuitem"><i data-lucide="credit-card"></i><span>Formas de pagamento</span></button>
+                  <button class="nav-link sub-item" data-view="chart-accounts" data-nav-item role="menuitem"><i data-lucide="book-open-check"></i><span>Plano de contas</span></button>
+                </div>
+              </div>
+
+              <div class="nav-group" data-menu-group="financeiro">
+                <button class="nav-link nav-parent" type="button" data-menu-toggle data-nav-item aria-haspopup="true" aria-expanded="false">
+                  <span>Financeiro</span><i class="chevron" data-lucide="chevron-down"></i>
+                </button>
+                <div class="submenu" id="financeiro-menu" role="menu" aria-label="Menu Financeiro">
+                  <button class="nav-link sub-item" data-view="accounts-payable" data-nav-item role="menuitem"><i data-lucide="file-minus-2"></i><span>Contas a pagar</span></button>
+                  <button class="nav-link sub-item" data-view="accounts-receivable" data-nav-item role="menuitem"><i data-lucide="file-plus-2"></i><span>Contas a receber</span></button>
+                </div>
+              </div>
+
+              <button class="nav-link" data-view="reports" data-nav-item><i data-lucide="bar-chart-3"></i><span>Relatórios</span></button>
+              <button class="nav-link" data-view="digital-menu" data-nav-item><i data-lucide="qr-code"></i><span>QR Cardápio</span></button>
+              <button class="nav-link" data-view="print-settings" data-nav-item><i data-lucide="printer"></i><span>Impressão</span></button>
+            </div>
+          </nav>
         </div>
       </header>
+
+      <main class="app-shell">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Operação em tempo real</p>
+            <h1>IGS Restaurant PRO</h1>
+          </div>
+          <div class="top-actions">
+            <button class="icon-btn" title="Sincronizar" data-action="refresh"><i data-lucide="refresh-cw"></i></button>
+            <button class="primary-btn" data-view="orders"><i data-lucide="plus"></i><span>Novo pedido</span></button>
+          </div>
+        </header>
 
       <section id="dashboard" class="view active">
         <div class="metrics" id="metrics"></div>
@@ -1059,6 +1079,7 @@
         </div>
       </section>
     </main>
+    </div>
     <script src="/static/app.js"></script>
   </body>
 </html>

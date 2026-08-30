@@ -75,6 +75,51 @@ const defaultProductGroups = [
 
 let productGroups = [];
 
+const isMobileNav = () => window.matchMedia("(max-width: 760px)").matches;
+
+function setMobileMenu(open) {
+  document.body.classList.toggle("menu-open", open);
+  const button = document.querySelector(".menu-toggle");
+  if (button) {
+    button.setAttribute("aria-expanded", String(open));
+  }
+}
+
+function closeAllMenuGroups() {
+  document.querySelectorAll(".nav-group.open").forEach((group) => {
+    group.classList.remove("open");
+    const toggle = group.querySelector("[data-menu-toggle]");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.classList.remove("active");
+    toggle?.removeAttribute("aria-current");
+  });
+}
+
+function openMenuGroup(group) {
+  if (!group) return;
+  closeAllMenuGroups();
+  group.classList.add("open");
+  const toggle = group.querySelector("[data-menu-toggle]");
+  toggle?.setAttribute("aria-expanded", "true");
+}
+
+function toggleMenuGroup(group) {
+  if (!group) return;
+  const open = !group.classList.contains("open");
+  if (open) {
+    openMenuGroup(group);
+  } else {
+    closeAllMenuGroups();
+  }
+
+  const toggle = group.querySelector("[data-menu-toggle]");
+  toggle?.setAttribute("aria-expanded", String(open));
+  toggle?.classList.toggle("active", open);
+  if (!open) {
+    toggle?.removeAttribute("aria-current");
+  }
+}
+
 const districtNames = {
   5: "Bethânia",
   10: "Centro",
@@ -86,16 +131,30 @@ function setView(viewName) {
   if (!view) return;
 
   document.querySelectorAll(".view").forEach((item) => item.classList.remove("active"));
-  document.querySelectorAll("[data-view]").forEach((item) => item.classList.remove("active"));
+  document.querySelectorAll("[data-nav-item]").forEach((item) => {
+    item.classList.remove("active");
+    item.removeAttribute("aria-current");
+  });
 
   view.classList.add("active");
-  document.querySelectorAll(`[data-view="${viewName}"]`).forEach((item) => item.classList.add("active"));
-
-  document.querySelectorAll(".submenu").forEach((submenu) => {
-    if (submenu.querySelector(`[data-view="${viewName}"]`)) {
-      submenu.closest(".nav-group")?.classList.add("open");
-    }
+  document.querySelectorAll(`[data-nav-item][data-view="${viewName}"]`).forEach((item) => {
+    item.classList.add("active");
+    item.setAttribute("aria-current", "page");
   });
+
+  const activeGroup = document.querySelector(`.submenu [data-view="${viewName}"]`)?.closest(".nav-group");
+  closeAllMenuGroups();
+  if (activeGroup) {
+    activeGroup.classList.add("open");
+    const toggle = activeGroup.querySelector("[data-menu-toggle]");
+    toggle?.classList.add("active");
+    toggle?.setAttribute("aria-expanded", "true");
+    toggle?.setAttribute("aria-current", "location");
+  }
+
+  if (isMobileNav()) {
+    setMobileMenu(false);
+  }
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -105,8 +164,15 @@ function bindNavigation() {
     button.addEventListener("click", () => setView(button.dataset.view));
   });
 
-  document.querySelectorAll("[data-toggle-menu]").forEach((button) => {
-    button.addEventListener("click", () => button.closest(".nav-group")?.classList.toggle("open"));
+  document.querySelectorAll("[data-menu-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const group = button.closest(".nav-group");
+      toggleMenuGroup(group);
+    });
+  });
+
+  document.querySelector(".menu-toggle")?.addEventListener("click", () => {
+    setMobileMenu(!document.body.classList.contains("menu-open"));
   });
 
   document.querySelector('[data-action="refresh"]')?.addEventListener("click", async () => {
@@ -163,6 +229,11 @@ function bindNavigation() {
   });
 
   document.addEventListener("click", (event) => {
+    if (!event.target.closest(".main-nav") && !event.target.closest(".menu-toggle")) {
+      setMobileMenu(false);
+      closeAllMenuGroups();
+    }
+
     const serviceOpen = event.target.closest("[data-open-service]");
     if (serviceOpen) {
       openService(serviceOpen.dataset.serviceType, Number(serviceOpen.dataset.serviceIndex));
@@ -181,6 +252,19 @@ function bindNavigation() {
     if (deliveryTab) {
       deliveryState.activeTab = deliveryTab.dataset.deliveryTab;
       renderDeliveryBoard();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileMenu(false);
+      closeAllMenuGroups();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (!isMobileNav()) {
+      setMobileMenu(false);
     }
   });
 }
@@ -1535,6 +1619,7 @@ async function boot() {
   const health = await fetch("/api/health").then((response) => response.json());
   const data = await fetch("/api/dashboard").then((response) => response.json());
   document.getElementById("db-mode").textContent = health.database === "postgres" ? "PostgreSQL conectado" : "modo demonstração";
+  document.getElementById("company-name").textContent = data.company?.name || "modo demonstração";
   renderMetrics(data.summary);
   renderChart(data.chart);
   renderTables(getStoredTables(data.tables));
