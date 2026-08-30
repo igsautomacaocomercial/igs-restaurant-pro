@@ -528,24 +528,22 @@
           </div>
         </div>
 
-        <div class="customer-register-grid">
-          <section class="panel product-form-card">
-            <div class="form-title"><i data-lucide="user-round"></i><span>Dados do cliente</span></div>
-            <div class="product-form-grid">
+        <div class="register-basic-shell customer-basic-shell">
+          <section class="panel product-basic-card">
+            <div class="form-title"><i data-lucide="user-round"></i><span>Dados básicos</span></div>
+            <div class="product-form-grid basic-grid">
               <label>Código<input value="000245" /></label>
               <label>Tipo<select><option>Consumidor</option><option>Empresa</option></select></label>
               <label class="span-2">Nome/Razão social<input value="Mariana Lopes" /></label>
-              <label>CPF/CNPJ<input value="123.456.789-00" /></label>
               <label>Telefone<input value="(33) 99999-8080" /></label>
               <label>WhatsApp<input value="(33) 98888-7070" /></label>
               <label>E-mail<input value="mariana@email.com" /></label>
-              <label class="span-2">Observação<textarea>Cliente prefere entrega sem contato e pagamento via PIX.</textarea></label>
             </div>
           </section>
 
-          <section class="panel product-form-card">
-            <div class="form-title"><i data-lucide="map-pinned"></i><span>Endereço e taxa de entrega</span></div>
-            <div class="product-form-grid">
+          <details class="panel advanced-box">
+            <summary>Endereço e entrega</summary>
+            <div class="advanced-grid">
               <label>CEP<input value="35164-000" /></label>
               <label class="span-2">Endereço<input value="Rua das Flores" /></label>
               <label>Número<input value="120" /></label>
@@ -562,10 +560,11 @@
               <label>Taxa entrega<input id="customer-delivery-fee" value="R$ 5,00" readonly /></label>
               <label>Compra exemplo<input id="customer-order-value" value="86,80" /></label>
               <label>Total delivery<input id="customer-delivery-total" value="R$ 91,80" readonly /></label>
+              <label class="span-2">Observação<textarea>Cliente prefere entrega sem contato e pagamento via PIX.</textarea></label>
             </div>
-          </section>
+          </details>
 
-          <section class="panel product-form-card">
+          <section class="panel product-basic-card">
             <div class="form-title"><i data-lucide="map"></i><span>Bairros cadastrados</span></div>
             <div class="table-panel flat-table">
               <div class="data-row header"><span>Bairro</span><span>Taxa</span><span>Tempo médio</span><span>Status</span></div>
@@ -582,36 +581,35 @@
           <h2>Cadastro de fornecedores</h2>
           <button class="primary-btn"><i data-lucide="save"></i><span>Salvar fornecedor</span></button>
         </div>
-        <div class="customer-register-grid">
-          <section class="panel product-form-card">
-            <div class="form-title"><i data-lucide="truck"></i><span>Dados do fornecedor</span></div>
-            <div class="product-form-grid">
+        <div class="register-basic-shell customer-basic-shell">
+          <section class="panel product-basic-card">
+            <div class="form-title"><i data-lucide="truck"></i><span>Dados básicos</span></div>
+            <div class="product-form-grid basic-grid">
               <label>Código<input value="000032" /></label>
               <label>CNPJ<input value="12.345.678/0001-90" /></label>
               <label class="span-2">Razão social<input value="IGS Distribuidora de Alimentos" /></label>
               <label>Nome fantasia<input value="IGS Distribuidora" /></label>
-              <label>Inscrição estadual<input value="123456789" /></label>
               <label>Telefone<input value="(33) 3333-2020" /></label>
-              <label>WhatsApp<input value="(33) 99999-2020" /></label>
               <label>E-mail<input value="compras@igsdistribuidora.com.br" /></label>
-              <label>Categoria<select><option>Alimentos</option><option>Bebidas</option><option>Embalagens</option><option>Serviços</option></select></label>
-              <label>Prazo pagamento<select><option>7 dias</option><option>14 dias</option><option>30 dias</option></select></label>
             </div>
           </section>
 
-          <section class="panel product-form-card">
-            <div class="form-title"><i data-lucide="map-pin"></i><span>Endereço e contato comercial</span></div>
-            <div class="product-form-grid">
+          <details class="panel advanced-box">
+            <summary>Dados complementares</summary>
+            <div class="advanced-grid">
               <label>CEP<input value="35160-000" /></label>
               <label class="span-2">Endereço<input value="Avenida Industrial" /></label>
               <label>Número<input value="850" /></label>
               <label>Bairro<input value="Distrito Industrial" /></label>
               <label>Cidade<input value="Ipatinga" /></label>
               <label>UF<input value="MG" /></label>
+              <label>Inscrição estadual<input value="123456789" /></label>
               <label>Contato<input value="Roberto Silva" /></label>
+              <label>Categoria<select><option>Alimentos</option><option>Bebidas</option><option>Embalagens</option><option>Serviços</option></select></label>
+              <label>Prazo pagamento<select><option>7 dias</option><option>14 dias</option><option>30 dias</option></select></label>
               <label class="span-2">Observação<textarea>Fornecedor principal para carnes, queijos e embalagens.</textarea></label>
             </div>
-          </section>
+          </details>
         </div>
       </section>
 
@@ -683,14 +681,40 @@
 
       <section id="ingredients" class="view">
         <div class="section-head">
-          <h2>Cadastro de ingredientes</h2>
-          <button class="primary-btn"><i data-lucide="plus"></i><span>Novo ingrediente</span></button>
+          <h2>Cadastro de material</h2>
+          <button class="primary-btn"><i data-lucide="plus"></i><span>Novo material</span></button>
         </div>
-        <div class="table-panel">
-          <div class="data-row header"><span>Ingrediente</span><span>Unidade</span><span>Estoque</span><span>Custo médio</span></div>
-          <div class="data-row"><span>Carne blend</span><span>kg</span><span>18,500</span><span>R$ 31,80</span></div>
-          <div class="data-row"><span>Queijo mussarela</span><span>kg</span><span>2,400</span><span>R$ 28,40</span></div>
-          <div class="data-row"><span>Molho especial</span><span>ml</span><span>850</span><span>R$ 0,04</span></div>
+        <div class="register-basic-shell customer-basic-shell">
+          <section class="panel product-basic-card">
+            <div class="form-title"><i data-lucide="wheat"></i><span>Dados básicos</span></div>
+            <div class="product-form-grid basic-grid">
+              <label>Código<input value="MAT001" /></label>
+              <label class="span-2">Descrição<input value="Carne blend" /></label>
+              <label>Unidade<select><option>kg</option><option>g</option><option>ml</option><option>un</option></select></label>
+              <label>Estoque atual<input value="18,500" /></label>
+              <label>Custo médio<input value="31,80" /></label>
+              <label>Status<select><option>Ativo</option><option>Inativo</option></select></label>
+            </div>
+          </section>
+
+          <details class="panel advanced-box">
+            <summary>Movimentação e composição</summary>
+            <div class="advanced-grid">
+              <label>Estoque mínimo<input value="2,000" /></label>
+              <label>Estoque ideal<input value="20,000" /></label>
+              <label class="span-2">Observação<textarea>Material usado na produção de hambúrgueres.</textarea></label>
+            </div>
+          </details>
+
+          <section class="panel product-basic-card">
+            <div class="form-title"><i data-lucide="boxes"></i><span>Lista de materiais</span></div>
+            <div class="table-panel flat-table">
+              <div class="data-row header"><span>Material</span><span>Unidade</span><span>Estoque</span><span>Custo</span></div>
+              <div class="data-row"><span>Carne blend</span><span>kg</span><span>18,500</span><span>R$ 31,80</span></div>
+              <div class="data-row"><span>Queijo mussarela</span><span>kg</span><span>2,400</span><span>R$ 28,40</span></div>
+              <div class="data-row"><span>Molho especial</span><span>ml</span><span>850</span><span>R$ 0,04</span></div>
+            </div>
+          </section>
         </div>
       </section>
 

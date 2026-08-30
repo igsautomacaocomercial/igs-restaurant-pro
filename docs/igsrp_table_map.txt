@@ -46,6 +46,9 @@ MVP basico inicial (telas simplificadas):
 - produto: codigo, descricao, categoria, unidade, preco, setor_estoque, status.
 - categoria: codigo, descricao, departamento, imagem, opcoes web/mobile.
 - empresa: razao social, nome fantasia, cnpj, telefone, whatsapp, email.
+- cliente: codigo, tipo, nome, telefone, whatsapp, email, endereco e taxa de entrega.
+- fornecedor: codigo, cnpj, razao social, nome fantasia, telefone, email.
+- material: codigo, descricao, unidade, estoque atual, custo medio, status.
 
 Observacao:
 
