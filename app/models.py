@@ -205,6 +205,7 @@ class Order(Base):
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     company_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("companies.id"))
+    ticket: Mapped[str] = mapped_column(Text, unique=True)
     table_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("dining_tables.id"))
     waiter_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"))
     channel: Mapped[str] = mapped_column(String(20))
@@ -231,3 +232,31 @@ class OrderItem(Base):
     observation: Mapped[str | None] = mapped_column(Text)
     status: Mapped[str] = mapped_column(String(20), default="pending")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+
+
+class Delivery(Base):
+    __tablename__ = "deliveries"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    order_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("orders.id"))
+    courier_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"))
+    district: Mapped[str | None] = mapped_column(Text)
+    fee: Mapped[float] = mapped_column(Numeric(12, 2), default=0)
+    commission: Mapped[float] = mapped_column(Numeric(12, 2), default=0)
+    status: Mapped[str] = mapped_column(String(30), default="pending")
+    estimated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    delivered_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class FinancialEntry(Base):
+    __tablename__ = "financial_entries"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    company_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("companies.id"))
+    type: Mapped[str] = mapped_column(String(20))
+    account_plan: Mapped[str] = mapped_column(Text)
+    description: Mapped[str] = mapped_column(Text)
+    amount: Mapped[float] = mapped_column(Numeric(12, 2))
+    due_date: Mapped[date] = mapped_column(Date)
+    paid_at: Mapped[date | None] = mapped_column(Date)
+    status: Mapped[str] = mapped_column(String(20), default="open")

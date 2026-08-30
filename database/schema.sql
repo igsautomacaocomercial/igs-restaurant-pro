@@ -203,6 +203,7 @@ CREATE TABLE IF NOT EXISTS recipes (
 CREATE TABLE IF NOT EXISTS orders (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     company_id UUID NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+    ticket TEXT NOT NULL UNIQUE,
     table_id UUID REFERENCES dining_tables(id),
     customer_id UUID REFERENCES customers(id),
     waiter_id UUID REFERENCES users(id),
