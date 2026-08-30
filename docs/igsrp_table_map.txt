@@ -41,6 +41,12 @@ Pendencias para confirmar com prints futuros:
 - nomes exatos de tabelas adicionais que ainda nao foram mapeadas.
 - relacao entre cadastro, estoque e financeiro no sistema antigo.
 
+MVP basico inicial (telas simplificadas):
+
+- produto: codigo, descricao, categoria, unidade, preco, setor_estoque, status.
+- categoria: codigo, descricao, departamento, imagem, opcoes web/mobile.
+- empresa: razao social, nome fantasia, cnpj, telefone, whatsapp, email.
+
 Observacao:
 
 - evitar commitar credenciais em arquivo de consulta.

@@ -2443,6 +2443,194 @@ h2 { font-size: 19px; }
   padding-bottom: 0;
 }
 
+.register-basic-shell,
+.category-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.product-basic-card,
+.category-search-card,
+.category-form-card,
+.advanced-box {
+  box-shadow: none;
+}
+
+.advanced-box {
+  grid-column: 1 / -1;
+}
+
+.basic-grid {
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+}
+
+.advanced-box {
+  padding: 0;
+  overflow: hidden;
+}
+
+.advanced-box summary {
+  min-height: 40px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--tomato);
+  font-weight: 800;
+  background: #fff4df;
+  border-bottom: 1px solid var(--line);
+}
+
+.advanced-box summary::-webkit-details-marker {
+  display: none;
+}
+
+.advanced-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 12px;
+  padding: 14px;
+}
+
+.advanced-grid label,
+.search-field,
+.search-check {
+  display: grid;
+  gap: 6px;
+  color: var(--tomato);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.advanced-grid input,
+.advanced-grid select,
+.advanced-grid textarea,
+.search-field input,
+.search-field select,
+.search-btn {
+  width: 100%;
+}
+
+.section-label {
+  display: grid;
+  gap: 8px;
+  color: var(--tomato);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.product-form-grid .check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.product-form-grid .check-row input {
+  width: auto;
+}
+
+.advanced-grid textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.image-placeholder {
+  min-height: 124px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffaf3;
+  color: var(--tomato);
+}
+
+.image-placeholder.small {
+  min-height: 96px;
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(54px, 1fr));
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffaf3;
+}
+
+.image-gallery.compact {
+  grid-template-columns: repeat(5, minmax(48px, 1fr));
+}
+
+.image-thumb {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, rgba(229, 83, 55, 0.1), rgba(243, 167, 18, 0.12));
+}
+
+.image-thumb.active {
+  border-color: var(--amber);
+  box-shadow: inset 0 0 0 2px rgba(243, 167, 18, 0.22);
+}
+
+.register-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.search-toolbar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.5fr) 180px auto auto;
+  gap: 12px;
+  align-items: end;
+  padding: 14px;
+}
+
+.search-check {
+  color: var(--ink);
+  font-weight: 700;
+  min-height: 42px;
+  align-content: center;
+}
+
+.search-check input {
+  width: auto;
+}
+
+.search-btn {
+  justify-content: center;
+  min-height: 42px;
+}
+
+.category-results {
+  margin: 0 14px 14px;
+}
+
+.category-form-card .product-form-grid {
+  padding-bottom: 8px;
+}
+
+.category-form-card .check-row {
+  padding-inline: 14px;
+  padding-bottom: 14px;
+}
+
+.category-form-card .check-row label {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .print-sector-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 1fr));
@@ -2530,6 +2718,22 @@ svg {
   .report-panel.wide { grid-column: span 1; }
   .finance-report-grid { grid-template-columns: repeat(2, 1fr); }
   .kanban { grid-template-columns: 1fr; }
+  .register-basic-shell,
+  .category-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .basic-grid {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+
+  .search-toolbar {
+    grid-template-columns: 1fr 180px;
+  }
+
+  .search-btn {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 760px) {
@@ -2614,8 +2818,21 @@ svg {
   .rank-list div { grid-template-columns: 1fr; }
   .heat-grid { grid-template-columns: auto 1fr; }
   .product-form-grid,
+  .basic-grid,
+  .advanced-grid,
   .quantity-grid,
   .print-sector-grid { grid-template-columns: 1fr; }
   .span-2 { grid-column: span 1; }
   .chart { overflow-x: auto; }
+  .search-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .image-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .register-actions {
+    flex-direction: column;
+  }
 }

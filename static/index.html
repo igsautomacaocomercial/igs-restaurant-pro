@@ -69,7 +69,7 @@
                   <button class="nav-link sub-item" data-view="tables-register" data-nav-item role="menuitem"><i data-lucide="table-2"></i><span>Mesas</span></button>
                   <button class="nav-link sub-item" data-view="tabs-register" data-nav-item role="menuitem"><i data-lucide="badge"></i><span>Comandas</span></button>
                   <button class="nav-link sub-item" data-view="stock" data-nav-item role="menuitem"><i data-lucide="package-search"></i><span>Estoque</span></button>
-                  <button class="nav-link sub-item" data-view="groups" data-nav-item role="menuitem"><i data-lucide="layers-3"></i><span>Grupos</span></button>
+                  <button class="nav-link sub-item" data-view="groups" data-nav-item role="menuitem"><i data-lucide="layers-3"></i><span>Categorias</span></button>
                   <button class="nav-link sub-item" data-view="ingredients" data-nav-item role="menuitem"><i data-lucide="wheat"></i><span>Ingredientes</span></button>
                   <button class="nav-link sub-item" data-view="payment-methods" data-nav-item role="menuitem"><i data-lucide="credit-card"></i><span>Formas de pagamento</span></button>
                   <button class="nav-link sub-item" data-view="chart-accounts" data-nav-item role="menuitem"><i data-lucide="book-open-check"></i><span>Plano de contas</span></button>
@@ -392,154 +392,82 @@
 
       <section id="products-register" class="view">
         <div class="section-head">
-          <h2>Cadastro de produtos e serviços</h2>
+          <h2>Cadastro de produtos</h2>
           <div class="top-actions">
-            <button class="ghost-btn"><i data-lucide="copy"></i><span>Replicar</span></button>
+            <button class="ghost-btn"><i data-lucide="copy"></i><span>Duplicar</span></button>
             <button class="primary-btn"><i data-lucide="save"></i><span>Salvar produto</span></button>
           </div>
         </div>
 
-        <div class="product-register-shell">
-          <aside class="product-tabs">
-            <button class="active"><i data-lucide="badge-dollar-sign"></i><span>Custo</span></button>
-            <button><i data-lucide="grid-3x3"></i><span>Grade</span></button>
-            <button><i data-lucide="barcode"></i><span>Nº série</span></button>
-            <button><i data-lucide="blocks"></i><span>Composição</span></button>
-            <button><i data-lucide="calendar-clock"></i><span>Lote/validade</span></button>
-            <button><i data-lucide="shuffle"></i><span>Variação</span></button>
-            <button><i data-lucide="factory"></i><span>Cód. fabricante</span></button>
-          </aside>
+        <div class="register-basic-shell">
+          <section class="panel product-basic-card">
+            <div class="form-title"><i data-lucide="file-pen-line"></i><span>Dados básicos</span></div>
+            <div class="product-form-grid basic-grid">
+              <label>Código<input value="000017" /></label>
+              <label class="span-2">Descrição<input value="Hambúrguer de costela" /></label>
+              <label>Categoria<select><option>Hambúrguer</option><option>Pizzas</option><option>Bebidas</option><option>Porções</option></select></label>
+              <label>Unidade<select><option>UN</option><option>KG</option><option>LT</option><option>CX</option></select></label>
+              <label>Preço de venda<input value="29,90" /></label>
+              <label>Setor de estoque<select><option>Cozinha</option><option>Bar</option><option>Copa</option><option>Caixa</option></select></label>
+              <label>Status<select><option>Ativo</option><option>Inativo</option></select></label>
+              <label class="span-2">Observação<input value="Lanche principal do cardápio" /></label>
+            </div>
+          </section>
 
-          <div class="product-form-area">
-            <section class="panel product-form-card">
-              <div class="form-title"><i data-lucide="file-pen-line"></i><span>Ficha do item</span></div>
-              <div class="product-form-grid">
-                <label>Código<input value="000017" /></label>
-                <label>Barras<input value="0000000000170" /></label>
-                <label>Código NCM<input value="85444200" /></label>
-                <label>Código CEST<input value="1200700" /></label>
-                <label class="span-2">Descrição<input value="HAMBÚRGUER DE COSTELA" /></label>
-                <label>Und. saída<input value="UN" /></label>
-                <label>Und. entrada<input value="UND" /></label>
-                <label>Und. tributável<input value="UND" /></label>
-                <label>Qtd tributável<input value="0,000" /></label>
-                <label>Und. embalagem<input value="" /></label>
-                <label>Qtd embalagem<input value="0,000" /></label>
-                <label>Fator conversão<input value="1,000000" /></label>
-                <label>Fator conv. referência<input value="1,000000" /></label>
-                <label>Tamanho<input value="" /></label>
-                <label>Cor<input value="" /></label>
-                <label>Peso<input value="0,0000 Kg" /></label>
-              </div>
-            </section>
+          <section class="panel product-photo">
+            <span>Imagem</span>
+            <div class="photo-preview">
+              <i data-lucide="hamburger"></i>
+            </div>
+            <button class="ghost-btn"><i data-lucide="image-plus"></i><span>Alterar foto</span></button>
+          </section>
 
-            <section class="panel product-form-card">
-              <div class="form-title"><i data-lucide="link"></i><span>Associação</span></div>
-              <div class="product-form-grid">
-                <label>Fornecedor<select><option>IGS Distribuidora</option><option>Fornecedor padrão</option></select></label>
-                <label>Grupo<select><option>HAMBÚRGUER</option><option>PIZZAS</option><option>BEBIDAS</option></select></label>
-                <label>Família<select><option>CARNE BOVINA</option><option>LANCHES</option><option>PORÇÕES</option></select></label>
-                <label>Características<select><option>COSTELA</option><option>ARTESANAL</option><option>PROMOCIONAL</option></select></label>
-                <label class="span-2">Informações nutricionais<textarea>Produto preparado na cozinha. Permite adicionais e observações no pedido.</textarea></label>
-              </div>
-            </section>
-
-            <section class="panel product-form-card">
-              <div class="form-title"><i data-lucide="boxes"></i><span>Quantidades</span></div>
-              <div class="quantity-grid">
-                <div><span>Estoque</span><strong>9999,000</strong></div>
-                <div><span>Ideal</span><strong>0,000</strong></div>
-                <div><span>Saldo</span><strong>9999,000</strong></div>
-                <div><span>NF-e não autorizadas</span><strong>1,000</strong></div>
-              </div>
-              <div class="check-row">
-                <label><input type="checkbox" checked /> Permitir venda fracionada</label>
-                <label><input type="checkbox" /> Trabalhar com venda em m²</label>
-              </div>
-            </section>
-
-            <section class="panel product-form-card">
-              <div class="form-title"><i data-lucide="printer"></i><span>Impressão e produção</span></div>
-              <div class="print-sector-grid">
-                <label class="print-sector-card active"><input type="radio" name="print-sector" checked /><i data-lucide="chef-hat"></i><strong>Cozinha</strong><span>Lanches, pizzas, porções</span></label>
-                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="beer"></i><strong>Bar</strong><span>Drinks, cervejas, bebidas</span></label>
-                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="glass-water"></i><strong>Choperia</strong><span>Chopp e torre</span></label>
-                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="coffee"></i><strong>Copa</strong><span>Sucos, cafés, sobremesas</span></label>
-                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="flame"></i><strong>Churrasqueira</strong><span>Carnes e grelhados</span></label>
-                <label class="print-sector-card"><input type="radio" name="print-sector" /><i data-lucide="receipt"></i><strong>Caixa</strong><span>Comprovante e conferência</span></label>
-              </div>
-              <div class="check-row">
-                <label><input type="checkbox" checked /> Imprimir produção ao enviar pedido</label>
-                <label><input type="checkbox" /> Imprimir também no caixa</label>
-                <label><input type="checkbox" checked /> Mostrar senha do pedido</label>
-              </div>
-            </section>
-          </div>
-
-          <aside class="product-side-panel">
-            <section class="panel product-photo">
-              <span>Fotografia</span>
-              <div class="photo-preview">
-                <i data-lucide="hamburger"></i>
-              </div>
-              <button class="ghost-btn"><i data-lucide="image-plus"></i><span>Alterar foto</span></button>
-            </section>
-
-            <section class="panel product-flags">
-              <label><input type="checkbox" checked /> Ativo</label>
-              <label><input type="checkbox" checked /> Sinc. Ghub</label>
-              <label><input type="checkbox" /> Controle de lote/validade</label>
-            </section>
-
-            <section class="panel product-history">
-              <div><span>Última venda</span><strong>29/07/2024</strong></div>
-              <div><span>Última compra</span><strong>//</strong></div>
-              <div><span>Preço alterado</span><strong>20/02/2024</strong></div>
-              <div><span>Validade dias</span><strong>0</strong></div>
-            </section>
-          </aside>
+          <details class="panel advanced-box">
+            <summary>Campos avançados</summary>
+            <div class="advanced-grid">
+              <label>Código de barras<input value="0000000000170" /></label>
+              <label>NCM<input value="85444200" /></label>
+              <label>CEST<input value="1200700" /></label>
+              <label>Fornecedor<select><option>IGS Distribuidora</option><option>Fornecedor padrão</option></select></label>
+              <label class="span-2">Composição<textarea>Produto preparado na cozinha. Permite adicionais e observações no pedido.</textarea></label>
+            </div>
+          </details>
         </div>
       </section>
 
       <section id="emitter-register" class="view">
         <div class="section-head">
-          <h2>Cadastro do emitente</h2>
+          <h2>Cadastro da empresa</h2>
           <button class="primary-btn"><i data-lucide="save"></i><span>Salvar emitente</span></button>
         </div>
-        <div class="customer-register-grid">
-          <section class="panel product-form-card">
-            <div class="form-title"><i data-lucide="store"></i><span>Dados do comércio</span></div>
-            <div class="product-form-grid">
+        <div class="register-basic-shell">
+          <section class="panel product-basic-card">
+            <div class="form-title"><i data-lucide="store"></i><span>Dados básicos</span></div>
+            <div class="product-form-grid basic-grid">
               <label class="span-2">Razão social<input value="IGS Burger House LTDA" /></label>
               <label class="span-2">Nome fantasia<input value="IGS Burger House" /></label>
               <label>CNPJ<input value="12.345.678/0001-90" /></label>
-              <label>Inscrição estadual<input value="123456789" /></label>
-              <label>Inscrição municipal<input value="987654" /></label>
-              <label>Regime tributário<select><option>Simples Nacional</option><option>Lucro Presumido</option><option>Lucro Real</option></select></label>
-              <label>CNAE<input value="5611-2/01" /></label>
               <label>Telefone<input value="(33) 3333-1010" /></label>
               <label>WhatsApp<input value="(33) 99999-1010" /></label>
               <label>E-mail<input value="contato@igsburger.com.br" /></label>
             </div>
           </section>
-          <section class="panel product-form-card">
-            <div class="form-title"><i data-lucide="map-pin"></i><span>Endereço e fiscal</span></div>
-            <div class="product-form-grid">
+
+          <details class="panel advanced-box">
+            <summary>Campos avançados</summary>
+            <div class="advanced-grid">
               <label>CEP<input value="35160-000" /></label>
               <label class="span-2">Endereço<input value="Avenida Brasil" /></label>
               <label>Número<input value="1000" /></label>
-              <label>Complemento<input value="Loja 02" /></label>
               <label>Bairro<input value="Centro" /></label>
               <label>Cidade<input value="Ipatinga" /></label>
               <label>UF<input value="MG" /></label>
+              <label>Inscrição estadual<input value="123456789" /></label>
+              <label>Inscrição municipal<input value="987654" /></label>
+              <label>Regime tributário<select><option>Simples Nacional</option><option>Lucro Presumido</option><option>Lucro Real</option></select></label>
               <label>Ambiente NFC-e<select><option>Homologação</option><option>Produção</option></select></label>
-              <label>Série NFC-e<input value="1" /></label>
-              <label>Próxima NFC-e<input value="128" /></label>
-              <label>Cód. SAT<input value="" /></label>
-              <label>Validade certificado<input value="31/12/2026" /></label>
-              <label class="span-2">Rodapé do cupom<textarea>Obrigado pela preferência. Volte sempre!</textarea></label>
             </div>
-          </section>
+          </details>
         </div>
       </section>
 
@@ -689,7 +617,7 @@
 
       <section id="groups-old" class="view">
         <div class="section-head">
-          <h2>Cadastro de grupos</h2>
+          <h2>Cadastro de categorias</h2>
           <button class="primary-btn"><i data-lucide="plus"></i><span>Novo grupo</span></button>
         </div>
         <div class="register-grid">
@@ -702,70 +630,53 @@
 
       <section id="groups" class="view">
         <div class="section-head">
-          <h2>Cadastro de grupos</h2>
-          <button class="primary-btn" data-group-action="save"><i data-lucide="save"></i><span>Salvar grupo</span></button>
+          <h2>Cadastro de categorias</h2>
+          <div class="top-actions">
+            <button class="ghost-btn"><i data-lucide="copy"></i><span>Duplicar</span></button>
+            <button class="primary-btn" data-group-action="save"><i data-lucide="save"></i><span>Salvar categoria</span></button>
+          </div>
         </div>
-        <div class="group-register-layout">
-          <section class="panel product-form-card">
-            <div class="form-title"><i data-lucide="layers-3"></i><span>Ficha do grupo</span></div>
-            <div class="product-form-grid">
-              <label>Codigo<input id="group-code" value="001" /></label>
-              <label class="span-2">Nome do grupo<input id="group-name" value="AGUA" /></label>
-              <label>Tipo
-                <select id="group-type">
-                  <option>Bebidas</option>
-                  <option>Alimentos</option>
-                  <option>Sobremesas</option>
-                  <option>Bomboniere</option>
-                  <option>Servicos</option>
-                </select>
-              </label>
-              <label>Setor impressao
-                <select id="group-sector">
-                  <option>Copa</option>
-                  <option>Bar</option>
-                  <option>Cozinha</option>
-                  <option>Choperia</option>
-                  <option>Churrasqueira</option>
-                  <option>Caixa</option>
-                </select>
-              </label>
-              <label>Icone
-                <select id="group-icon">
-                  <option value="droplets">Agua</option>
-                  <option value="cup-soda">Suco/Refrigerante</option>
-                  <option value="pizza">Pizza</option>
-                  <option value="sandwich">Lanche</option>
-                  <option value="utensils">Porcoes</option>
-                  <option value="ice-cream-cone">Sorvete</option>
-                  <option value="candy">Balas</option>
-                </select>
-              </label>
-              <label>Status
-                <select id="group-status">
-                  <option>Ativo</option>
-                  <option>Inativo</option>
-                </select>
-              </label>
-              <label>Ordem<input id="group-order" value="1" /></label>
-              <label class="span-2">Observacao<textarea id="group-notes">Grupo usado no cardapio, PDV e impressao setorizada.</textarea></label>
+        <div class="category-workspace">
+          <section class="panel category-search-card">
+            <div class="form-title"><i data-lucide="search"></i><span>Consulta de categorias</span></div>
+            <div class="search-toolbar">
+              <label class="search-field">Termo de busca<input value="" /></label>
+              <label class="search-field">Buscar por<select><option>Descrição</option><option>Código</option></select></label>
+              <label class="search-check"><input type="checkbox" /> Exibir inativas</label>
+              <button class="primary-btn search-btn"><i data-lucide="search"></i><span>Pesquisar</span></button>
+            </div>
+            <div class="table-panel category-results">
+              <div class="data-row header"><span>Código</span><span>Descrição</span></div>
+              <div class="data-row"><span>001</span><span>Bebidas</span></div>
+              <div class="data-row"><span>002</span><span>Hambúrgueres</span></div>
+              <div class="data-row"><span>003</span><span>Porções</span></div>
             </div>
           </section>
 
-          <section class="panel">
-            <div class="panel-head">
-              <div>
-                <p class="eyebrow">Mercadorias</p>
-                <h2>Grupos cadastrados</h2>
-              </div>
-              <button class="ghost-btn" data-group-action="new"><i data-lucide="plus"></i><span>Novo</span></button>
+          <section class="panel category-form-card">
+            <div class="form-title"><i data-lucide="file-pen-line"></i><span>Cadastro de categorias</span></div>
+            <div class="product-form-grid basic-grid">
+              <label>Código<input id="group-code" value="001" /></label>
+              <label class="span-2">Descrição<input id="group-name" value="AGUA" /></label>
+              <label>Departamento (Balança)<input value="0" /></label>
+              <div class="span-2 section-label">Imagem selecionada<div class="image-placeholder small"><i data-lucide="image-off"></i></div></div>
+              <div class="span-2 section-label">Opções</div>
+              <label class="check-row"><input type="checkbox" /> Exibir na Comanda Mobile</label>
+              <label class="check-row"><input type="checkbox" /> Exibir na WEB</label>
+              <div class="span-2 section-label">Selecione a imagem<div class="image-gallery compact">
+                <div class="image-thumb active"></div>
+                <div class="image-thumb"></div>
+                <div class="image-thumb"></div>
+                <div class="image-thumb"></div>
+                <div class="image-thumb"></div>
+                <div class="image-thumb"></div>
+              </div></div>
+              <label class="span-2">Tipo de imagem<select><option>Bebidas</option><option>Burgers</option><option>Doces</option><option>Pizzas</option><option>Porções</option><option>Salgados</option><option>Outras</option></select></label>
             </div>
-            <div class="group-grid" id="group-grid"></div>
-          </section>
-
-          <section class="table-panel group-table">
-            <div class="data-row header"><span>Grupo</span><span>Tipo</span><span>Impressao</span><span>Status</span></div>
-            <div id="group-table"></div>
+            <div class="register-actions">
+              <button class="ghost-btn"><i data-lucide="file-plus-2"></i><span>Abrir registro</span></button>
+              <button class="primary-btn"><i data-lucide="plus"></i><span>Novo</span></button>
+            </div>
           </section>
         </div>
       </section>
