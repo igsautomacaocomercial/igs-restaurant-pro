@@ -156,6 +156,7 @@ function setView(viewName) {
     setMobileMenu(false);
   }
 
+  view.scrollIntoView({ behavior: "smooth", block: "start" });
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
